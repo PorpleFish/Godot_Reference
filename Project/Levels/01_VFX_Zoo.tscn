@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdp0yx32brnsd"]
+
+[ext_resource type="PackedScene" uid="uid://usrecwemelg7" path="res://Geometry/Maps/01_VFX_Zoo.blend" id="1_ighwj"]
+[ext_resource type="Material" uid="uid://cythdiuuas8jj" path="res://Materials/M_GlowBeam_01.tres" id="2_45mn3"]
+[ext_resource type="Material" uid="uid://bhv1i5f67qmse" path="res://Materials/M_GlowSpot_01.tres" id="3_j6igm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n3381"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_45mn3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6igm"]
+shading_mode = 2
+albedo_color = Color(0.957965, 0.422078, 0.642383, 1)
+emission_enabled = true
+emission = Color(0.396041, 0.559822, 0.92487, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="Environment" id="Environment_ighwj"]
+background_mode = 1
+background_color = Color(0.275091, 0.275091, 0.275091, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.227194, 0.233186, 0.255928, 1)
+ambient_light_energy = 1.5
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.47
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.175994, 0.194707, 0.224124, 1)
+fog_density = 0.2005
+fog_sky_affect = 0.0
+
+[node name="VFX_Zoo" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.137341, 0.990524, 0, 0.990524, 0.137341, -1, 6.00336e-09, -4.32972e-08, 17.5945, 4.27032, -3.26869e-07)
+current = true
+fov = 34.9
+size = 12.19
+
+[node name="Geo" type="Node3D" parent="."]
+
+[node name="01_VFX_Zoo" parent="Geo" instance=ExtResource("1_ighwj")]
+
+[node name="GodRays" type="Node3D" parent="Geo"]
+transform = Transform3D(0.999997, 0.000679869, 0.0022396, -0.000675487, 0.999998, -0.00196312, -0.00224092, 0.00196161, 0.999996, 0, 0, 0)
+
+[node name="Ray_01" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, 7.40129)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_01"]
+transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225572, -0.407912, 1.82614)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+skeleton = NodePath("../..")
+
+[node name="Ray_02" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, 4.68791)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_02"]
+transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225577, -0.407912, 1.82614)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+skeleton = NodePath("../..")
+
+[node name="Ray_03" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, 1.85938)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_03"]
+transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225575, -0.407912, 1.82614)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+skeleton = NodePath("../..")
+
+[node name="Ray_04" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, -1.87945)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_04"]
+transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225575, -0.407912, 1.82614)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+skeleton = NodePath("../..")
+
+[node name="Ray_05" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, -4.59284)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_05"]
+transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225572, -0.407912, 1.82614)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+skeleton = NodePath("../..")
+
+[node name="Ray_06" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, -7.42138)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_06"]
+transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225582, -0.407912, 1.82614)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+skeleton = NodePath("../..")
+
+[node name="Light" type="MeshInstance3D" parent="Geo"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 8.66537, -4.68261, 3.70816, 0)
+mesh = SubResource("PlaneMesh_45mn3")
+skeleton = NodePath("../01_VFX_Zoo")
+surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
+
+[node name="Lighting_World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World"]
+transform = Transform3D(0.258819, 0.683013, -0.683013, 0, 0.707107, 0.707107, 0.965926, -0.183013, 0.183013, 0, 11, 0)
+light_color = Color(0.685551, 0.706805, 0.798071, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting_World"]
+environment = SubResource("Environment_ighwj")
+
+[editable path="Geo/01_VFX_Zoo"]

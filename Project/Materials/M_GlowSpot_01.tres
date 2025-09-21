@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bhv1i5f67qmse"]
+
+[ext_resource type="Shader" uid="uid://byq0y6gq5dbtm" path="res://Shaders/Mesh_Special/LightSpot.gdshader" id="1_xg1jv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xg1jv")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/size = 2.099
+shader_parameter/squishness = Vector2(1, 1)
+shader_parameter/color1 = Color(0.151572, 0.137745, 0.213745, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/color3 = Color(0, 0, 0, 1)
+shader_parameter/color4 = Color(0, 0, 0, 1)
+shader_parameter/color5 = Color(0, 0, 0, 1)
+shader_parameter/color6 = Color(0, 0, 0, 1)
+shader_parameter/step1 = 0.026
+shader_parameter/step2 = 0.205
+shader_parameter/step3 = 0.385
+shader_parameter/step4 = 0.429
+shader_parameter/step5 = 0.445
+shader_parameter/step6 = 0.522

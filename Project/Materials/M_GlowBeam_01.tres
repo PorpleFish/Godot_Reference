@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cythdiuuas8jj"]
+
+[ext_resource type="Shader" uid="uid://ctfckrapi5cjy" path="res://Shaders/Mesh_Special/LightBeam.gdshader" id="1_62ldr"]
+
+[sub_resource type="Curve" id="Curve_62ldr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.100977, 0.910789), 0.0, 0.0, 0, 0, Vector2(0.254072, 0.821578), 0.0, 0.0, 0, 0, Vector2(0.37785, 0.886008), -0.167817, -0.167817, 0, 0, Vector2(0.511401, 0.858749), 0.0, 0.0, 0, 0, Vector2(0.643322, 0.94796), 0.0, 0.0, 0, 0, Vector2(0.773616, 0.915745), 0.0, 0.0, 0, 0, Vector2(0.876221, 0.905833), 0.0, 0.0, 0, 0, Vector2(0.973941, 0.360656), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_scy8y"]
+curve = SubResource("Curve_62ldr")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_62ldr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scy8y"]
+noise = SubResource("FastNoiseLite_62ldr")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_62ldr")
+shader_parameter/proximity_fade_distance = 0.29
+shader_parameter/first_color = Color(0.219608, 0.584314, 1, 1)
+shader_parameter/second_color = Color(0.482353, 0.32549, 0.290196, 0.329412)
+shader_parameter/use_second_color = true
+shader_parameter/cone_curve = 0.21
+shader_parameter/cone_start_width = 0.27
+shader_parameter/beam_sharpness = 0.6
+shader_parameter/beam_fade = 0.85
+shader_parameter/use_gradient = true
+shader_parameter/gradient = SubResource("CurveTexture_scy8y")
+shader_parameter/use_noise = true
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_scy8y")
+shader_parameter/noise_scale = Vector2(0.1, 0.09)
+shader_parameter/noise_distortion_scroll_speed = Vector2(0.001, -0.01)
+shader_parameter/noise_scroll_speed = Vector2(0.2, -0.2)
+shader_parameter/noise_distortion_intensity = 0.6
+shader_parameter/noise_intensity = 1.0
