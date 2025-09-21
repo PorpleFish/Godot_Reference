@@ -14,7 +14,7 @@ config/name="Godot Reference"
 config/name_localized={
 "ja": ""
 }
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [filesystem]
