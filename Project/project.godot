@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Godot Learning Project"
+config/name="Godot Reference"
+config/name_localized={
+"ja": ""
+}
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

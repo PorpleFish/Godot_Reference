@@ -2,16 +2,23 @@
 
 [ext_resource type="Shader" uid="uid://ctfckrapi5cjy" path="res://Shaders/Mesh_Special/LightBeam.gdshader" id="1_62ldr"]
 
-[sub_resource type="Curve" id="Curve_62ldr"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.100977, 0.910789), 0.0, 0.0, 0, 0, Vector2(0.254072, 0.821578), 0.0, 0.0, 0, 0, Vector2(0.37785, 0.886008), -0.167817, -0.167817, 0, 0, Vector2(0.511401, 0.858749), 0.0, 0.0, 0, 0, Vector2(0.643322, 0.94796), 0.0, 0.0, 0, 0, Vector2(0.773616, 0.915745), 0.0, 0.0, 0, 0, Vector2(0.876221, 0.905833), 0.0, 0.0, 0, 0, Vector2(0.973941, 0.360656), 0.0, 0.0, 0, 0]
-point_count = 9
+[sub_resource type="Gradient" id="Gradient_62ldr"]
+offsets = PackedFloat32Array(0, 0.09375, 0.185764, 0.319444, 0.418403, 0.555556, 0.739583, 0.875)
+colors = PackedColorArray(0.411458, 0.411458, 0.411458, 1, 0.589878, 0.589878, 0.589878, 1, 0.336608, 0.336608, 0.336608, 1, 0.617944, 0.617944, 0.617944, 1, 0.873978, 0.873978, 0.873978, 1, 0.36389, 0.36389, 0.36389, 1, 1, 1, 1, 1, 0.384106, 0.384106, 0.384106, 1)
 
-[sub_resource type="CurveTexture" id="CurveTexture_scy8y"]
-curve = SubResource("Curve_62ldr")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_scy8y"]
+gradient = SubResource("Gradient_62ldr")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_62ldr"]
+noise_type = 0
+fractal_weighted_strength = 0.3
+domain_warp_enabled = true
+domain_warp_frequency = 0.01
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scy8y"]
+in_3d_space = true
+seamless = true
+normalize = false
 noise = SubResource("FastNoiseLite_62ldr")
 
 [resource]
@@ -21,16 +28,16 @@ shader_parameter/proximity_fade_distance = 0.29
 shader_parameter/first_color = Color(0.219608, 0.584314, 1, 1)
 shader_parameter/second_color = Color(0.482353, 0.32549, 0.290196, 0.329412)
 shader_parameter/use_second_color = true
-shader_parameter/cone_curve = 0.21
-shader_parameter/cone_start_width = 0.27
+shader_parameter/cone_curve = 0.0
+shader_parameter/cone_start_width = 0.15
 shader_parameter/beam_sharpness = 0.6
 shader_parameter/beam_fade = 0.85
 shader_parameter/use_gradient = true
-shader_parameter/gradient = SubResource("CurveTexture_scy8y")
+shader_parameter/gradient = SubResource("GradientTexture1D_scy8y")
 shader_parameter/use_noise = true
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_scy8y")
-shader_parameter/noise_scale = Vector2(0.1, 0.09)
-shader_parameter/noise_distortion_scroll_speed = Vector2(0.001, -0.01)
-shader_parameter/noise_scroll_speed = Vector2(0.2, -0.2)
-shader_parameter/noise_distortion_intensity = 0.6
-shader_parameter/noise_intensity = 1.0
+shader_parameter/noise_scale = Vector2(0.5, 1.5)
+shader_parameter/noise_distortion_scroll_speed = Vector2(0.02, -0.01)
+shader_parameter/noise_scroll_speed = Vector2(-0.05, 0.05)
+shader_parameter/noise_distortion_intensity = 0.01
+shader_parameter/noise_intensity = 1.5

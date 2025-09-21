@@ -49,88 +49,82 @@ size = 12.19
 transform = Transform3D(0.999997, 0.000679869, 0.0022396, -0.000675487, 0.999998, -0.00196312, -0.00224092, 0.00196161, 0.999996, 0, 0, 0)
 
 [node name="Ray_01" type="MeshInstance3D" parent="Geo/GodRays"]
-transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, 7.40129)
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 7.35537)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("../../01_VFX_Zoo")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_01"]
-transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225572, -0.407912, 1.82614)
-material_override = ExtResource("3_j6igm")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_n3381")
-skeleton = NodePath("../..")
 
 [node name="Ray_02" type="MeshInstance3D" parent="Geo/GodRays"]
-transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, 4.68791)
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 4.59743)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("../../01_VFX_Zoo")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_02"]
-transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225577, -0.407912, 1.82614)
-material_override = ExtResource("3_j6igm")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_n3381")
-skeleton = NodePath("../..")
 
 [node name="Ray_03" type="MeshInstance3D" parent="Geo/GodRays"]
-transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, 1.85938)
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 1.85938)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("../../01_VFX_Zoo")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_03"]
-transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225575, -0.407912, 1.82614)
-material_override = ExtResource("3_j6igm")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_n3381")
-skeleton = NodePath("../..")
 
 [node name="Ray_04" type="MeshInstance3D" parent="Geo/GodRays"]
-transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, -1.87945)
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -1.87949)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("../../01_VFX_Zoo")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_04"]
-transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225575, -0.407912, 1.82614)
-material_override = ExtResource("3_j6igm")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_n3381")
-skeleton = NodePath("../..")
 
 [node name="Ray_05" type="MeshInstance3D" parent="Geo/GodRays"]
-transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, -4.59284)
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -4.68539)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("../../01_VFX_Zoo")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_05"]
-transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225572, -0.407912, 1.82614)
-material_override = ExtResource("3_j6igm")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_n3381")
-skeleton = NodePath("../..")
 
 [node name="Ray_06" type="MeshInstance3D" parent="Geo/GodRays"]
-transform = Transform3D(6.08431e-08, 0.5, 2.29669, -4.14719e-08, 0.866025, -1.326, -0.731064, 0, 3.47767e-07, -2.68848, 2.70582, -7.42138)
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -7.36773)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("../../01_VFX_Zoo")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays/Ray_06"]
-transform = Transform3D(1.84934e-07, -5.06353e-08, -1.51918, 0.860696, 0.874219, -1.3446e-08, 0.549674, 0.0249793, 4.42378e-08, 0.0225582, -0.407912, 1.82614)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689037, 7.3848)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
-skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, 4.67142)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, 1.84289)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -1.89594)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -4.60933)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -7.43787)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
 
 [node name="Light" type="MeshInstance3D" parent="Geo"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 8.66537, -4.68261, 3.70816, 0)
