@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdp0yx32brnsd"]
+[gd_scene load_steps=13 format=3 uid="uid://cdp0yx32brnsd"]
 
 [ext_resource type="PackedScene" uid="uid://usrecwemelg7" path="res://Geometry/Maps/01_VFX_Zoo.blend" id="1_ighwj"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_n3381"]
 [ext_resource type="Material" uid="uid://cythdiuuas8jj" path="res://Materials/M_GlowBeam_01.tres" id="2_45mn3"]
 [ext_resource type="Material" uid="uid://bhv1i5f67qmse" path="res://Materials/M_GlowSpot_01.tres" id="3_j6igm"]
+[ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="4_vjl4k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
 
@@ -15,14 +17,20 @@ shading_mode = 2
 albedo_color = Color(0.957965, 0.422078, 0.642383, 1)
 emission_enabled = true
 emission = Color(0.396041, 0.559822, 0.92487, 1)
-emission_energy_multiplier = 4.0
+emission_energy_multiplier = 2.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n3381"]
+panorama = ExtResource("4_vjl4k")
+energy_multiplier = 0.15
+
+[sub_resource type="Sky" id="Sky_fqrx1"]
+sky_material = SubResource("PanoramaSkyMaterial_n3381")
 
 [sub_resource type="Environment" id="Environment_ighwj"]
-background_mode = 1
-background_color = Color(0.275091, 0.275091, 0.275091, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.227194, 0.233186, 0.255928, 1)
-ambient_light_energy = 1.5
+background_mode = 2
+sky = SubResource("Sky_fqrx1")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
@@ -40,6 +48,12 @@ transform = Transform3D(-4.37114e-08, -0.137341, 0.990524, 0, 0.990524, 0.137341
 current = true
 fov = 34.9
 size = 12.19
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_n3381")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Geo" type="Node3D" parent="."]
 
@@ -127,7 +141,8 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
 [node name="Light" type="MeshInstance3D" parent="Geo"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 8.66537, -4.68261, 3.70816, 0)
+transform = Transform3D(-0.2588191, 0.9659258, 0, -0.9659258, -0.2588191, 0, 0, 0, 8.66537, -4.750521, 3.70816, 0)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_45mn3")
 skeleton = NodePath("../01_VFX_Zoo")
 surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
@@ -136,7 +151,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World"]
 transform = Transform3D(0.258819, 0.683013, -0.683013, 0, 0.707107, 0.707107, 0.965926, -0.183013, 0.183013, 0, 11, 0)
-light_color = Color(0.685551, 0.706805, 0.798071, 1)
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_blur = 1.25
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting_World"]
 environment = SubResource("Environment_ighwj")

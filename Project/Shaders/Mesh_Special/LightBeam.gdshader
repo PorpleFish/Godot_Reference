@@ -29,6 +29,11 @@ uniform vec2 noise_scroll_speed;
 uniform float noise_distortion_intensity;
 uniform float noise_intensity;
 
+// Camera fade:
+uniform float z_fade_end;
+uniform float z_fade_start;
+
+varying float z_axis_fade;
 void vertex() {
 	// Point towards the camera, but keep the Z facing the same direction
 	// Get the z from the model's transformation matrix
@@ -39,6 +44,7 @@ void vertex() {
 	// Essentially the same as finding the right and forward vector for camera transforms
 	vec3 local_x = normalize(cross(to_camera, local_z));
 	vec3 local_y = normalize(cross(local_z, local_x));
+	z_axis_fade = smoothstep(z_fade_end, z_fade_start, abs(dot(to_camera, local_z)));
 	// Apply this transform to the matrix directly
 	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
 		vec4(local_x * length(MODEL_MATRIX[0].xyz), 0.0), // New X basis vector
@@ -112,7 +118,6 @@ void fragment() {
 
 			horizontal_mask *= mix(1.0, combined_noise, noise_intensity);
 		}
-
-		ALPHA *= horizontal_mask;
-		ALPHA *= vertical_mask;
+		
+		ALPHA = horizontal_mask * vertical_mask * input_alpha * z_axis_fade;
 }

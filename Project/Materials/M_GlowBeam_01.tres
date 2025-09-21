@@ -41,3 +41,5 @@ shader_parameter/noise_distortion_scroll_speed = Vector2(0.02, -0.01)
 shader_parameter/noise_scroll_speed = Vector2(-0.05, 0.05)
 shader_parameter/noise_distortion_intensity = 0.01
 shader_parameter/noise_intensity = 1.5
+shader_parameter/z_fade_end = 0.98
+shader_parameter/z_fade_start = 0.92
