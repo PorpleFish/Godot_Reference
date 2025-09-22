@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdp0yx32brnsd"]
+[gd_scene load_steps=16 format=3 uid="uid://cdp0yx32brnsd"]
 
 [ext_resource type="PackedScene" uid="uid://usrecwemelg7" path="res://Geometry/Maps/01_VFX_Zoo.blend" id="1_ighwj"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_n3381"]
 [ext_resource type="Material" uid="uid://cythdiuuas8jj" path="res://Materials/M_GlowBeam_01.tres" id="2_45mn3"]
 [ext_resource type="Material" uid="uid://bhv1i5f67qmse" path="res://Materials/M_GlowSpot_01.tres" id="3_j6igm"]
 [ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="4_vjl4k"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_36k6p"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_0mfhx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
 
@@ -29,8 +31,9 @@ sky_material = SubResource("PanoramaSkyMaterial_n3381")
 [sub_resource type="Environment" id="Environment_ighwj"]
 background_mode = 2
 sky = SubResource("Sky_fqrx1")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.34872884, 0.38515243, 0.4810813, 1)
+ambient_light_energy = 0.2
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
@@ -41,10 +44,13 @@ fog_light_color = Color(0.175994, 0.194707, 0.224124, 1)
 fog_density = 0.2005
 fog_sky_affect = 0.0
 
+[sub_resource type="Resource" id="Resource_61o71"]
+script = ExtResource("7_0mfhx")
+
 [node name="VFX_Zoo" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.137341, 0.990524, 0, 0.990524, 0.137341, -1, 6.00336e-09, -4.32972e-08, 17.5945, 4.27032, -3.26869e-07)
+transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
 current = true
 fov = 34.9
 size = 12.19
@@ -158,5 +164,11 @@ shadow_blur = 1.25
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting_World"]
 environment = SubResource("Environment_ighwj")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
+script = ExtResource("6_36k6p")
+tween_resource = SubResource("Resource_61o71")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [editable path="Geo/01_VFX_Zoo"]
