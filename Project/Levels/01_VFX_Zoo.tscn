@@ -1,14 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdp0yx32brnsd"]
+[gd_scene load_steps=16 format=3 uid="uid://cdp0yx32brnsd"]
 
 [ext_resource type="PackedScene" uid="uid://usrecwemelg7" path="res://Geometry/Maps/01_VFX_Zoo.blend" id="1_ighwj"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_n3381"]
 [ext_resource type="Material" uid="uid://cythdiuuas8jj" path="res://Materials/M_GlowBeam_01.tres" id="2_45mn3"]
-[ext_resource type="Material" uid="uid://daiw3sqpewkqi" path="res://Materials/M_GlowBeam_02_Wide.tres" id="4_0mfhx"]
+[ext_resource type="Material" uid="uid://bhv1i5f67qmse" path="res://Materials/M_GlowSpot_01.tres" id="3_j6igm"]
 [ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="4_vjl4k"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_36k6p"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_0mfhx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n3381"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_45mn3"]
 
@@ -17,7 +19,7 @@ shading_mode = 2
 albedo_color = Color(0.957965, 0.422078, 0.642383, 1)
 emission_enabled = true
 emission = Color(0.396041, 0.559822, 0.92487, 1)
-emission_energy_multiplier = 1.7
+emission_energy_multiplier = 2.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n3381"]
 panorama = ExtResource("4_vjl4k")
@@ -30,7 +32,7 @@ sky_material = SubResource("PanoramaSkyMaterial_n3381")
 background_mode = 2
 sky = SubResource("Sky_fqrx1")
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.34872884, 0.38515243, 0.4810813, 1)
 ambient_light_energy = 0.2
 tonemap_mode = 3
 glow_enabled = true
@@ -48,7 +50,7 @@ script = ExtResource("7_0mfhx")
 [node name="VFX_Zoo" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.25957763, 0.07728184, 0.962625, -9.313226e-10, 0.99679285, -0.08002495, -0.96572226, -0.02077269, -0.25874513, 17.281082, 0.8426931, 0.5989885)
+transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
 current = true
 fov = 34.9
 size = 12.19
@@ -63,61 +65,98 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="01_VFX_Zoo" parent="Geo" instance=ExtResource("1_ighwj")]
 
-[node name="Cube_001" parent="Geo/01_VFX_Zoo" index="1"]
-transform = Transform3D(0.9079238, 0, -0.4191352, 0, 1, 0, 0.4191352, 0, 0.9079238, -2.277601, 0, -3.5846648)
-cast_shadow = 2
-
-[node name="GodRays" type="Node3D" parent="Geo/01_VFX_Zoo/Cube_001" index="0"]
+[node name="GodRays" type="Node3D" parent="Geo"]
 transform = Transform3D(0.999997, 0.000679869, 0.0022396, -0.000675487, 0.999998, -0.00196312, -0.00224092, 0.00196161, 0.999996, 0, 0, 0)
 
-[node name="Ray_01" type="MeshInstance3D" parent="Geo/01_VFX_Zoo/Cube_001/GodRays"]
-transform = Transform3D(6.868504e-08, -1.1920929e-07, 3.0890439, -4.5867637e-08, 1.0003221, -1.3113022e-06, -0.8074804, -5.2368726e-08, 3.5145726e-07, 2.614959, 3.7710845, 7.399823)
+[node name="Ray_01" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 7.35537)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../01_VFX_Zoo")
 
-[node name="Ray_02" type="MeshInstance3D" parent="Geo/01_VFX_Zoo/Cube_001/GodRays"]
-transform = Transform3D(1.1265469e-07, 2.0861626e-07, 4.9671636, -7.6792304e-08, 0.9999996, -5.00679e-06, -1.3514601, -4.9582574e-08, 5.652712e-07, 5.0021524, 5.301966, 4.546159)
-material_override = ExtResource("4_0mfhx")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_vjl4k")
-skeleton = NodePath("../../..")
-
-[node name="Ray_03" type="MeshInstance3D" parent="Geo/01_VFX_Zoo/Cube_001/GodRays"]
-transform = Transform3D(1.662112e-07, -0.020087145, 3.7247941, -1.1329966e-07, 0.9997978, 0.07483286, -1.9939497, -5.1245554e-08, 4.1965814e-07, 3.4967244, 2.3679633, 1.3475891)
+[node name="Ray_02" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 4.59743)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../01_VFX_Zoo")
 
-[node name="Light" type="MeshInstance3D" parent="Geo/01_VFX_Zoo/Cube_001" index="1"]
-transform = Transform3D(-5.4162264e-08, 1, 0, -1.2390882, -4.371139e-08, 0, 0, 0, 1.1818618, 0.55292106, 5.151242, 4.6582117)
+[node name="Ray_03" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 1.85938)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="Ray_04" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -1.87949)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="Ray_05" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -4.68539)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="Ray_06" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -7.36773)
+material_override = ExtResource("2_45mn3")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_vjl4k")
+skeleton = NodePath("../../01_VFX_Zoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689037, 7.3848)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, 4.67142)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, 1.84289)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -1.89594)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -4.60933)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Geo/GodRays"]
+transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -7.43787)
+material_override = ExtResource("3_j6igm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_n3381")
+
+[node name="Light" type="MeshInstance3D" parent="Geo"]
+transform = Transform3D(-0.2588191, 0.9659258, 0, -0.9659258, -0.2588191, 0, 0, 0, 8.66537, -4.750521, 3.70816, 0)
 cast_shadow = 2
 mesh = SubResource("PlaneMesh_45mn3")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
-
-[node name="Light2" type="MeshInstance3D" parent="Geo/01_VFX_Zoo/Cube_001" index="2"]
-transform = Transform3D(-2.5696899e-08, 1.2390882, 8.28622e-11, -0.47516897, -4.371529e-08, 1.0520764e-17, 0, 0, 0.4971067, 0.35593927, 3.820025, 7.3760576)
-cast_shadow = 2
-mesh = SubResource("PlaneMesh_45mn3")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
-
-[node name="Light3" type="MeshInstance3D" parent="Geo/01_VFX_Zoo/Cube_001" index="3"]
-transform = Transform3D(-2.9302413e-08, 1.1787963, 0, -0.670361, -5.152681e-08, 0, 0, 0, 0.8322854, 0, 2.2413642, 1.3041)
-cast_shadow = 2
-mesh = SubResource("PlaneMesh_45mn3")
-skeleton = NodePath("../..")
+skeleton = NodePath("../01_VFX_Zoo")
 surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
 
 [node name="Lighting_World" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World"]
 transform = Transform3D(0.258819, 0.683013, -0.683013, 0, 0.707107, 0.707107, 0.965926, -0.183013, 0.183013, 0, 11, 0)
-light_color = Color(0.4080491, 0.42546234, 0.9090764, 1)
-light_energy = 0.01
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 10.0
@@ -127,7 +166,7 @@ shadow_blur = 1.25
 environment = SubResource("Environment_ighwj")
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(-0.25957763, 0.07728184, 0.962625, -9.313226e-10, 0.99679285, -0.08002495, -0.96572226, -0.02077269, -0.25874513, 17.281082, 0.8426931, 0.5989885)
+transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
 script = ExtResource("6_36k6p")
 tween_resource = SubResource("Resource_61o71")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
