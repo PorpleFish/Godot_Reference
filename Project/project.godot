@@ -14,6 +14,7 @@ config/name="Godot Reference"
 config/name_localized={
 "ja": ""
 }
+run/main_scene="uid://cdp0yx32brnsd"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -35,6 +36,7 @@ import/blender/enabled.web=true
 rendering_device/driver="d3d12"
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=4
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
