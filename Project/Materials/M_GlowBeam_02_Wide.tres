@@ -1,0 +1,45 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://daiw3sqpewkqi"]
+
+[ext_resource type="Shader" uid="uid://ctfckrapi5cjy" path="res://Shaders/Mesh_Special/LightBeam.gdshader" id="1_vwuap"]
+
+[sub_resource type="Gradient" id="Gradient_62ldr"]
+offsets = PackedFloat32Array(0, 0.09375, 0.185764, 0.319444, 0.418403, 0.555556, 0.739583, 0.875)
+colors = PackedColorArray(0.411458, 0.411458, 0.411458, 1, 0.589878, 0.589878, 0.589878, 1, 0.336608, 0.336608, 0.336608, 1, 0.617944, 0.617944, 0.617944, 1, 0.873978, 0.873978, 0.873978, 1, 0.36389, 0.36389, 0.36389, 1, 1, 1, 1, 1, 0.384106, 0.384106, 0.384106, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_scy8y"]
+gradient = SubResource("Gradient_62ldr")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_62ldr"]
+noise_type = 0
+fractal_weighted_strength = 0.3
+domain_warp_enabled = true
+domain_warp_frequency = 0.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scy8y"]
+noise = SubResource("FastNoiseLite_62ldr")
+seamless = true
+in_3d_space = true
+normalize = false
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vwuap")
+shader_parameter/proximity_fade_distance = 0.29
+shader_parameter/first_color = Color(0.219608, 0.584314, 1, 1)
+shader_parameter/second_color = Color(0.32941177, 0.8117647, 0.62352943, 1)
+shader_parameter/use_second_color = true
+shader_parameter/cone_curve = 0.0
+shader_parameter/cone_start_width = 0.41999999061216
+shader_parameter/beam_sharpness = 0.8499999810008
+shader_parameter/beam_fade = 0.6999999843536
+shader_parameter/use_gradient = true
+shader_parameter/gradient = SubResource("GradientTexture1D_scy8y")
+shader_parameter/use_noise = true
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_scy8y")
+shader_parameter/noise_scale = Vector2(0.5, 1.5)
+shader_parameter/noise_distortion_scroll_speed = Vector2(0.02, -0.01)
+shader_parameter/noise_scroll_speed = Vector2(-0.05, 0.05)
+shader_parameter/noise_distortion_intensity = 0.01
+shader_parameter/noise_intensity = 1.4
+shader_parameter/z_fade_end = 0.98
+shader_parameter/z_fade_start = 0.92
