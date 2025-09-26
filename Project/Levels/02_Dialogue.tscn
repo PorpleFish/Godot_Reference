@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://7thxplfxpxjt"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_3bxl6"]
+[ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="2_dsbn4"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_24pjt"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_merwr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4786"]
+panorama = ExtResource("2_dsbn4")
+energy_multiplier = 0.15
+
+[sub_resource type="Sky" id="Sky_fqrx1"]
+sky_material = SubResource("PanoramaSkyMaterial_y4786")
+
+[sub_resource type="Environment" id="Environment_e8yid"]
+background_mode = 2
+sky = SubResource("Sky_fqrx1")
+ambient_light_source = 2
+ambient_light_color = Color(0.34872884, 0.38515243, 0.4810813, 1)
+ambient_light_energy = 0.2
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.47
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.175994, 0.194707, 0.224124, 1)
+fog_density = 0.2005
+fog_sky_affect = 0.0
+
+[sub_resource type="Resource" id="Resource_30v6g"]
+script = ExtResource("4_merwr")
+
+[node name="02Dialogue" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
+current = true
+fov = 34.9
+size = 12.19
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_3bxl6")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Lighting_World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World"]
+transform = Transform3D(0.258819, 0.683013, -0.683013, 0, 0.707107, 0.707107, 0.965926, -0.183013, 0.183013, 0, 11, 0)
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_blur = 1.25
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting_World"]
+environment = SubResource("Environment_e8yid")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
+script = ExtResource("3_24pjt")
+tween_resource = SubResource("Resource_30v6g")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
