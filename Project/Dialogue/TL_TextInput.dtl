@@ -1,0 +1,12 @@
+DC_Narrator: First of all, let's get through the standard procedure.
+label Retry Name
+DC_Narrator: What is your name?
+[text_input var="Player.name" placeholder="Household name 'Duncan'"]
+if {Player.name} == "PorpleFish":
+	DC_Narrator: wh..at..... did you...
+	DC_Narrator: just say.,...
+	jump Retry Name
+[wait time="1.0"]
+DC_Narrator: thats great, and what's your friends name?
+- Breight
+- Tawg

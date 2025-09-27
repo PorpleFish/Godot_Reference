@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://7thxplfxpxjt"]
+[gd_scene load_steps=10 format=3 uid="uid://7thxplfxpxjt"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_3bxl6"]
 [ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="2_dsbn4"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_24pjt"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_merwr"]
+[ext_resource type="Script" uid="uid://ncn7fnfs4ywy" path="res://Scripts/Testing_Dialogue.gd" id="5_dsbn4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4786"]
 panorama = ExtResource("2_dsbn4")
@@ -62,3 +63,6 @@ transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0
 script = ExtResource("3_24pjt")
 tween_resource = SubResource("Resource_30v6g")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Dialogue" type="Node3D" parent="."]
+script = ExtResource("5_dsbn4")

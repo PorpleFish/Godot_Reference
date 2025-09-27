@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0aaxa07cfxs4"]
+
+[ext_resource type="Script" uid="uid://buoogjmndndi6" path="res://Scripts/main_menu.gd" id="1_vtvm2"]
+[ext_resource type="Theme" uid="uid://dvwno78jp3gre" path="res://User_Interface/Themes/T_Main_Menu.tres" id="2_3v0tr"]
+[ext_resource type="Shader" uid="uid://crra077vkvppx" path="res://Shaders/UI/Circle.gdshader" id="3_hrd0q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua00h"]
+shader = ExtResource("3_hrd0q")
+shader_parameter/radius = 0.46800002223
+shader_parameter/blur = 0.002000000095
+shader_parameter/border_offset = 0.0110000005225
+shader_parameter/border_width = 0.0450000021375
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_vtvm2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 151.0
+offset_right = 295.0
+offset_bottom = 189.0
+theme = ExtResource("2_3v0tr")
+theme_type_variation = &"GraphFrameTitleLabel"
+text = "Godot Reference"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 212.0
+offset_right = 313.0
+offset_bottom = -291.0
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("2_3v0tr")
+text = "Start"
+alignment = 0
+
+[node name="Spacer_01" type="Control" parent="Buttons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Options" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("2_3v0tr")
+text = "Options"
+alignment = 0
+
+[node name="Spacer_02" type="Control" parent="Buttons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("2_3v0tr")
+text = "Quit"
+alignment = 0
+
+[node name="Circle" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_ua00h")
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = 128.0
+offset_right = -188.0
+offset_bottom = -170.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="pressed" from="Buttons/Start" to="." method="_start_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_options_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_quit_pressed"]
