@@ -1,17 +1,264 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0aaxa07cfxs4"]
+[gd_scene load_steps=15 format=3 uid="uid://d0aaxa07cfxs4"]
 
 [ext_resource type="Script" uid="uid://buoogjmndndi6" path="res://Scripts/main_menu.gd" id="1_vtvm2"]
 [ext_resource type="Theme" uid="uid://dvwno78jp3gre" path="res://User_Interface/Themes/T_Main_Menu.tres" id="2_3v0tr"]
 [ext_resource type="Shader" uid="uid://crra077vkvppx" path="res://Shaders/UI/Circle.gdshader" id="3_hrd0q"]
+[ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/S_FishCursor.png" id="4_3v0tr"]
+[ext_resource type="Script" uid="uid://b5thtt02yrneu" path="res://Scripts/Level_Button.gd" id="4_fwf6a"]
+[ext_resource type="Script" uid="uid://ddbuaponwu8hv" path="res://Scripts/Focus_Follow_Cursor.gd" id="4_hrd0q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ua00h"]
 shader = ExtResource("3_hrd0q")
 shader_parameter/radius = 0.46800002223
-shader_parameter/blur = 0.002000000095
-shader_parameter/border_offset = 0.0110000005225
+shader_parameter/blur = 0.00089999997722999
+shader_parameter/border_offset = 0.0070000003325
 shader_parameter/border_width = 0.0450000021375
 
-[node name="Main Menu" type="Control"]
+[sub_resource type="Curve2D" id="Curve2D_hrd0q"]
+_data = {
+"points": PackedVector2Array(-260.44287, -210.25816, 260.44287, 210.25816, 483, -27, 236.53123, -180.45146, -236.53123, 180.45146, 461, 719)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_3v0tr"]
+resource_name = "Idle"
+length = 2.0000124
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.6250125, 1.7567092, 1.875, 2.0000124),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 12, 12, 12]
+}
+
+[sub_resource type="Animation" id="Animation_hrd0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwf6a"]
+_data = {
+&"Idle": SubResource("Animation_3v0tr"),
+&"RESET": SubResource("Animation_hrd0q")
+}
+
+[sub_resource type="Animation" id="Animation_qit3q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(350, 350)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:material:shader_parameter/border_width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0450000021375]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(614, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Circle:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(128, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Main Buttons:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Main Buttons:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Circle/Level_Select_Path:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-184.9437, -30.938622)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Circle/Level_Select_Path:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fwf6a"]
+resource_name = "Start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(350, 350), Vector2(600, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:material:shader_parameter/border_width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.5001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0450000021375, 0.018000000855, 0.018000000855]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(614, -0.25, 0, 0.09843546, -347.69217, 36.94375, -0.2682312, 40.5083, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Circle:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(128, -0.25, 0, 0.16510212, -56.75882, 21.938622, -0.13489786, 25.723074, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Main Buttons:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 3, 3),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -75.64966, -66.74361, -0.052021682, 0, 0.052021682, 0, -65.94847, -0.06666666, -1.2192307, 0.06666666, 1.2192307),
+"times": PackedFloat32Array(0, 0.3, 0.5)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Main Buttons:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.13546859, 0.25549516),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.15967038, 0.15967038, 0.15967035, 1), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Circle/Level_Select_Path:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-184.9437, -30.938622), Vector2(-678, -140), Vector2(-200.94373, -41.93862)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Circle/Level_Select_Path:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxdik"]
+_data = {
+&"RESET": SubResource("Animation_qit3q"),
+&"Start": SubResource("Animation_fwf6a")
+}
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("Initial_Focus", "Level_Focus", "Level_Follows", "Level_Buttons", "Menu_Buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +268,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_vtvm2")
+Initial_Focus = NodePath("Main Buttons/Buttons/Start")
+Level_Focus = NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX")
+Level_Follows = [NodePath("Circle/Level_Select_Path/UI_Follow_01"), NodePath("Circle/Level_Select_Path/UI_Follow_02"), NodePath("Circle/Level_Select_Path/UI_Follow_03"), NodePath("Circle/Level_Select_Path/UI_Follow_04"), NodePath("Circle/Level_Select_Path/UI_Follow_05"), NodePath("Circle/Level_Select_Path/UI_Follow_06"), NodePath("Circle/Level_Select_Path/UI_Follow_07"), NodePath("Circle/Level_Select_Path/UI_Follow_08")]
+Level_Buttons = [NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX"), NodePath("Circle/Level_Select_Path/UI_Follow_02/Dialogue"), NodePath("Circle/Level_Select_Path/UI_Follow_03/Mini Games"), NodePath("Circle/Level_Select_Path/UI_Follow_04/Cameras"), NodePath("Circle/Level_Select_Path/UI_Follow_05/Vehicles"), NodePath("Circle/Level_Select_Path/UI_Follow_06/AI Behaviour"), NodePath("Circle/Level_Select_Path/UI_Follow_07/Networking"), NodePath("Circle/Level_Select_Path/UI_Follow_08/Animation")]
+Menu_Buttons = [NodePath("Main Buttons/Buttons/Start"), NodePath("Main Buttons/Buttons/Options"), NodePath("Main Buttons/Buttons/Quit")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="."]
@@ -30,56 +282,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.99509895, 1.003588)
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Label" parent="."]
+[node name="Main Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Main Buttons"]
 layout_mode = 0
 offset_left = 48.0
-offset_top = 151.0
-offset_right = 295.0
-offset_bottom = 189.0
+offset_top = 155.0
+offset_right = 327.0
+offset_bottom = 198.0
 theme = ExtResource("2_3v0tr")
 theme_type_variation = &"GraphFrameTitleLabel"
 text = "Godot Reference"
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="Main Buttons"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 212.0
-offset_right = 313.0
-offset_bottom = -291.0
+offset_left = 56.0
+offset_top = 222.0
+offset_right = 305.0
+offset_bottom = 333.0
 grow_vertical = 2
 
-[node name="Start" type="Button" parent="Buttons"]
+[node name="Start" type="Button" parent="Main Buttons/Buttons"]
 layout_mode = 2
 theme = ExtResource("2_3v0tr")
 text = "Start"
 alignment = 0
 
-[node name="Spacer_01" type="Control" parent="Buttons"]
+[node name="Spacer_01" type="Control" parent="Main Buttons/Buttons"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Options" type="Button" parent="Buttons"]
+[node name="Options" type="Button" parent="Main Buttons/Buttons"]
 layout_mode = 2
 theme = ExtResource("2_3v0tr")
 text = "Options"
 alignment = 0
 
-[node name="Spacer_02" type="Control" parent="Buttons"]
+[node name="Spacer_02" type="Control" parent="Main Buttons/Buttons"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Quit" type="Button" parent="Buttons"]
+[node name="Quit" type="Button" parent="Main Buttons/Buttons"]
 layout_mode = 2
 theme = ExtResource("2_3v0tr")
 text = "Quit"
 alignment = 0
 
 [node name="Circle" type="Panel" parent="."]
+z_index = 1
 material = SubResource("ShaderMaterial_ua00h")
 layout_mode = 1
 anchors_preset = 11
@@ -93,6 +355,238 @@ offset_bottom = -170.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[connection signal="pressed" from="Buttons/Start" to="." method="_start_pressed"]
-[connection signal="pressed" from="Buttons/Options" to="." method="_options_pressed"]
-[connection signal="pressed" from="Buttons/Quit" to="." method="_quit_pressed"]
+[node name="Level_Select_Path" type="Path2D" parent="Circle"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-184.9437, -30.938622)
+scale = Vector2(1.2482073, 1.0013405)
+curve = SubResource("Curve2D_hrd0q")
+
+[node name="UI_Follow_01" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="VFX" type="Button" parent="Circle/Level_Select_Path/UI_Follow_01"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654622
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+scale = Vector2(1.0125425, 1)
+theme = ExtResource("2_3v0tr")
+text = "VFX"
+alignment = 0
+script = ExtResource("4_fwf6a")
+level_path = "res://Levels/01_VFX.tscn"
+
+[node name="UI_Follow_02" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="Dialogue" type="Button" parent="Circle/Level_Select_Path/UI_Follow_02"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+text = "Dialogue
+"
+alignment = 0
+script = ExtResource("4_fwf6a")
+level_path = "res://Levels/02_Dialogue.tscn"
+
+[node name="UI_Follow_03" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="Mini Games" type="Button" parent="Circle/Level_Select_Path/UI_Follow_03"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+disabled = true
+text = "Mini Games"
+alignment = 0
+
+[node name="UI_Follow_04" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="Cameras" type="Button" parent="Circle/Level_Select_Path/UI_Follow_04"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+disabled = true
+text = "Cameras
+"
+alignment = 0
+
+[node name="UI_Follow_05" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="Vehicles" type="Button" parent="Circle/Level_Select_Path/UI_Follow_05"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+disabled = true
+text = "Vehicle Movement"
+alignment = 0
+
+[node name="UI_Follow_06" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="AI Behaviour" type="Button" parent="Circle/Level_Select_Path/UI_Follow_06"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+disabled = true
+text = "AI Behaviour"
+alignment = 0
+
+[node name="UI_Follow_07" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="Networking" type="Button" parent="Circle/Level_Select_Path/UI_Follow_07"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+disabled = true
+text = "Networking
+"
+alignment = 0
+
+[node name="UI_Follow_08" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+position = Vector2(678.751, 350.00876)
+progress = 432.14227
+h_offset = 20.0
+rotates = false
+
+[node name="Animation" type="Button" parent="Circle/Level_Select_Path/UI_Follow_08"]
+z_index = -1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -0.20654646
+offset_top = -10.463911
+offset_right = 248.79346
+offset_bottom = 14.536089
+grow_vertical = 2
+theme = ExtResource("2_3v0tr")
+disabled = true
+text = "Animation"
+alignment = 0
+
+[node name="Cursor_control" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 2
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 217.0
+offset_right = 45.0
+offset_bottom = 249.0
+pivot_offset = Vector2(0, 16)
+script = ExtResource("4_hrd0q")
+
+[node name="Cursor_Sprite" type="Sprite2D" parent="Cursor_control"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_3v0tr")
+centered = false
+hframes = 14
+
+[node name="Cursor_Animation" type="AnimationPlayer" parent="Cursor_control/Cursor_Sprite"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_fwf6a")
+}
+
+[node name="Menu Transitions" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_cxdik")
+}
+
+[node name="Copy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.5
+offset_top = -55.0
+offset_right = 139.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1.0041528)
+theme = ExtResource("2_3v0tr")
+theme_type_variation = &"GraphFrameTitleLabel"
+theme_override_font_sizes/font_size = 14
+text = "© PorpleFish ・ Porple.Fish"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="pressed" from="Main Buttons/Buttons/Start" to="." method="_start_pressed"]
+[connection signal="pressed" from="Main Buttons/Buttons/Options" to="." method="_options_pressed"]
+[connection signal="pressed" from="Main Buttons/Buttons/Quit" to="." method="_quit_pressed"]

@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 group_uniforms Basic;
 uniform float radius : hint_range(0.0, 2.0, 0.001) = 0.1;
-uniform float blur : hint_range(0.0, 0.1, 0.001) = 0.05;
+uniform float blur : hint_range(0.0, 0.01, 0.0001) = 0.05;
 uniform float border_offset : hint_range(0.0, 0.1, 0.001) = 0.05;
 uniform float border_width : hint_range(0.0, 0.1, 0.001) = 0.05;
 

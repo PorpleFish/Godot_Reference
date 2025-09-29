@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b58ds7f7wsvqs"
-path="res://.godot/imported/msgothic.ttc-ca01440c8afba777efcdd4986827f634.fontdata"
+uid="uid://5c8b1huxjaxt"
+path="res://.godot/imported/MSGOTHIC.TTC-96a2a23e79abb49ed226feafabebcd00.fontdata"
 
 [deps]
 
-source_file="res://User_Interface/Fonts/msgothic.ttc"
-dest_files=["res://.godot/imported/msgothic.ttc-ca01440c8afba777efcdd4986827f634.fontdata"]
+source_file="res://User_Interface/Fonts/MSGOTHIC.TTC"
+dest_files=["res://.godot/imported/MSGOTHIC.TTC-96a2a23e79abb49ed226feafabebcd00.fontdata"]
 
 [params]
 
