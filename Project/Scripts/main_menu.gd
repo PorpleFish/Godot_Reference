@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 				follow_tweens.push_back(create_tween())
 				follow_tweens[index].set_ease(Tween.EASE_OUT)
 				follow_tweens[index].set_trans(Tween.TRANS_CUBIC)
-				follow_tweens[index].tween_property(Level_Follows[index], "progress", progress, 0.6)
+				follow_tweens[index].tween_property(Level_Follows[index], "progress", progress, 0.5)
 	if event.as_text() == "Left Mouse Button":
 		print("Pos is: ", event.position)
 
@@ -51,7 +51,8 @@ func _start_pressed() -> void:
 		follow_tweens.push_back(create_tween())
 		follow_tweens[index].set_ease(Tween.EASE_OUT)
 		follow_tweens[index].set_trans(Tween.TRANS_CUBIC)
-		follow_tweens[index].tween_property(Level_Follows[index], "progress", progress, 0.9)
+		follow_tweens[index].tween_property(Level_Follows[index], "progress", progress, 0.6)
+	follow_tweens[0].connect("finished", level_names_placement_finished)
 	%Cursor_control.hide_cursor(0.7)
 	%Cursor_control.should_lerp = false
 	for button in Menu_Buttons:
@@ -71,12 +72,15 @@ func finished_menu_animation() -> void:
 	match state:
 		main_menu_state.MAIN:
 			%Cursor_control.snap_to_control(Initial_Focus)
-		main_menu_state.LEVEL_SELECT:
-			%Cursor_control.snap_to_control(Level_Focus)
-	%Cursor_control.show_cursor(0.1)
-	%Cursor_control.should_lerp = true
+			%Cursor_control.show_cursor(0.4)
+			%Cursor_control.should_lerp = true
 
 func animation_finish_handler(animation : String) -> void:
 	if animation == "Start":
 		print("Finished start animation")
 		finished_menu_animation()
+
+func level_names_placement_finished() -> void:
+	%Cursor_control.snap_to_control(Level_Focus)
+	%Cursor_control.show_cursor(0.05)
+	%Cursor_control.should_lerp = true

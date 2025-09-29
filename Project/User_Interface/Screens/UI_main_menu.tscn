@@ -280,11 +280,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.99509895, 1.003588)
+scale = Vector2(0.9956994, 1.0043336)
 color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="Main Buttons" type="Control" parent="."]
 layout_mode = 1
@@ -311,7 +311,7 @@ anchor_bottom = 1.0
 offset_left = 56.0
 offset_top = 222.0
 offset_right = 305.0
-offset_bottom = 333.0
+offset_bottom = -275.0
 grow_vertical = 2
 
 [node name="Start" type="Button" parent="Main Buttons/Buttons"]
