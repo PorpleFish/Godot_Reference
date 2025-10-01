@@ -1,12 +1,58 @@
-[gd_scene format=3 uid="uid://hs6ansf1yoya"]
+[gd_scene load_steps=8 format=3 uid="uid://hs6ansf1yoya"]
 
-[node name="UiPause" type="Control"]
+[ext_resource type="Theme" uid="uid://dvwno78jp3gre" path="res://User_Interface/Themes/T_Main_Menu.tres" id="1_ld8gg"]
+[ext_resource type="Script" uid="uid://7vabbpd0xbyw" path="res://Scripts/pause_menu.gd" id="1_y8qqf"]
+[ext_resource type="Script" uid="uid://ddbuaponwu8hv" path="res://Scripts/Focus_Follow_Cursor.gd" id="3_ovkim"]
+[ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/S_FishCursor.png" id="4_i0g58"]
+
+[sub_resource type="Animation" id="Animation_3v0tr"]
+resource_name = "Idle"
+length = 2.0000124
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.6250125, 1.7567092, 1.875, 2.0000124),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 12, 12, 12]
+}
+
+[sub_resource type="Animation" id="Animation_hrd0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwf6a"]
+_data = {
+&"Idle": SubResource("Animation_3v0tr"),
+&"RESET": SubResource("Animation_hrd0q")
+}
+
+[node name="UiPause" type="Control" node_paths=PackedStringArray("Initial_Focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_y8qqf")
+Initial_Focus = NodePath("Background/MarginContainer/Buttons/Resume")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -20,3 +66,87 @@ grow_vertical = 2
 scale = Vector2(0.9956994, 1.0043336)
 color = Color(0, 0, 0, 1)
 metadata/_edit_group_ = true
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 20.086426
+offset_top = 119.482216
+offset_right = 299.08643
+offset_bottom = 162.48222
+theme = ExtResource("1_ld8gg")
+theme_type_variation = &"GraphFrameTitleLabel"
+text = "Pause"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.129877e-05
+offset_top = -76.07442
+offset_right = 6.1035156e-05
+offset_bottom = 74.9256
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="Buttons" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="Background/MarginContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_ld8gg")
+text = "Resume
+"
+alignment = 0
+
+[node name="Spacer_01" type="Control" parent="Background/MarginContainer/Buttons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Options" type="Button" parent="Background/MarginContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_ld8gg")
+text = "Options"
+alignment = 0
+
+[node name="Spacer_02" type="Control" parent="Background/MarginContainer/Buttons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Background/MarginContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_ld8gg")
+text = "Quit to Menu"
+alignment = 0
+
+[node name="Cursor_control" type="Control" parent="Background"]
+unique_name_in_owner = true
+z_index = 2
+anchors_preset = 0
+offset_left = -19.082
+offset_top = 240.95578
+offset_right = 12.917999
+offset_bottom = 272.95578
+pivot_offset = Vector2(0, 16)
+script = ExtResource("3_ovkim")
+
+[node name="Cursor_Sprite" type="Sprite2D" parent="Background/Cursor_control"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_i0g58")
+centered = false
+hframes = 14
+
+[node name="Cursor_Animation" type="AnimationPlayer" parent="Background/Cursor_control/Cursor_Sprite"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_fwf6a")
+}
+
+[connection signal="pressed" from="Background/MarginContainer/Buttons/Resume" to="." method="_resume_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/Buttons/Options" to="." method="_options_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/Buttons/Quit" to="." method="_quit_pressed"]

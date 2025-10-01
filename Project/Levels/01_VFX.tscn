@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdp0yx32brnsd"]
+[gd_scene load_steps=19 format=3 uid="uid://cdp0yx32brnsd"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_n3381"]
 [ext_resource type="PackedScene" uid="uid://b3y6e64rhj7ou" path="res://Geometry/Maps/01_vfx_zoo_scene.tscn" id="2_36k6p"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="4_vjl4k"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_36k6p"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_0mfhx"]
+[ext_resource type="PackedScene" uid="uid://bmsoqyqsq3owr" path="res://Character/CH_Third_Person.tscn" id="8_8yp87"]
+[ext_resource type="Script" uid="uid://qoso3vc5yx6s" path="res://Levels/Third_Person_Camera.gd" id="9_gwj6c"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
 
@@ -33,7 +35,7 @@ background_mode = 2
 sky = SubResource("Sky_fqrx1")
 ambient_light_source = 2
 ambient_light_color = Color(0.34872884, 0.38515243, 0.4810813, 1)
-ambient_light_energy = 0.2
+ambient_light_energy = 0.35
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
@@ -47,10 +49,13 @@ fog_sky_affect = 0.0
 [sub_resource type="Resource" id="Resource_61o71"]
 script = ExtResource("7_0mfhx")
 
+[sub_resource type="Resource" id="Resource_nbvdm"]
+script = ExtResource("7_0mfhx")
+
 [node name="VFX_Zoo" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
 current = true
 fov = 34.9
 size = 12.19
@@ -169,4 +174,27 @@ environment = SubResource("Environment_ighwj")
 transform = Transform3D(-4.371139e-08, -0.06346984, 0.99798375, 0, 0.99798375, 0.06346984, -1, 2.774355e-09, -4.3623256e-08, 28.093414, 3.9358208, -9.789355e-08)
 script = ExtResource("6_36k6p")
 tween_resource = SubResource("Resource_61o71")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Third_Person" parent="." node_paths=PackedStringArray("camera", "spawn_point") instance=ExtResource("8_8yp87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7240586, 0)
+acceleration = 50.0
+max_speed = 5.0
+breaking_speed = 0.3
+camera = NodePath("../Camera3D")
+spawn_point = NodePath("../Spawn_Point")
+
+[node name="Spawn_Point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.075029, 0.96837044, -9.536743e-07)
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("9_gwj6c")
+target = NodePath("../Third_Person")
+
+[node name="Third_Person_Camera" type="Node3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+script = ExtResource("6_36k6p")
+priority = 5
+tween_resource = SubResource("Resource_nbvdm")
+tween_on_load = false
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"

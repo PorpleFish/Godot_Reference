@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmsoqyqsq3owr"]
+
+[ext_resource type="Script" uid="uid://bsdjxrbu4u2kr" path="res://Scripts/Third_Person.gd" id="1_4kxk7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4kxk7"]
+radius = 0.3
+height = 1.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3j53i"]
+radius = 0.3
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kxk7"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_6c1y8"]
+material = SubResource("StandardMaterial3D_4kxk7")
+text = "OwO"
+pixel_size = 0.03
+
+[node name="Third_Person" type="CharacterBody3D"]
+script = ExtResource("1_4kxk7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4kxk7")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00022429228, 0.0054250956, 0)
+mesh = SubResource("CapsuleMesh_3j53i")
+
+[node name="Face2" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1.1512821, -6.5434925e-08, -8.7422926e-08, 1.006483e-07, 0.7484883, -8.742297e-08, 1.0064827e-07, 6.543494e-08, 1.0000017, -6.518782e-08, 0.39413512, 0.3515265)
+mesh = SubResource("TextMesh_6c1y8")
+skeleton = NodePath("")
