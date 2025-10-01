@@ -8,6 +8,7 @@ class_name Third_Person
 
 @export_subgroup("02 - Camera")
 @export var camera : Camera3D
+@export var third_person_phantom_camera : PhantomCamera3D
 
 @export_subgroup("03 - Gameplay")
 @export var spawn_point : Node3D
@@ -18,35 +19,32 @@ var is_paused : bool = false
 var gravity : float
 var target_rotation : float
 var pause_menu : Control
+var camera_target_rotation : Vector3
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("jump"):
-		if %Face2.mesh.text == "OoO":
-			%Face2.mesh.text = "OwO"
-		else:
-			%Face2.mesh.text = "OoO"
 	if Input.is_action_just_pressed("pause"):
 		pause_handler()
 
 func _physics_process(delta: float) -> void:
 	handle_gravity(delta)
 	handle_input(delta)
+	handle_camera_input(delta)
+	handle_level_bounds()
+	
 	move_and_slide()
-	if position.y < respawn_height:
-		position = spawn_point.position
 	# If the character is moving, rotate in the flattened movement direction.
 	if Vector2(velocity.z, velocity.x).length() > 0:
 		target_rotation = Vector2(velocity.z, velocity.x).angle()
 	rotation.y = lerp_angle(rotation.y, target_rotation, delta * 10)
-	#	transform = transform.interpolate_with(transform.looking_at(position + velocity, Vector3.UP), 0.8)
 
 func handle_input(delta : float) -> void:
 	if !is_possessed:
 		return
 	var input = get_normal_move_input()
 	var velocity_2D = Vector2(velocity.x, velocity.z)
-
-	# If the player isn't doing input, lerp the x and z to 0
+	
+	# TODO: TRY limit_length()
+	# TODO: Get input working so you can move slowly by gently nudging the stick?
 	if input.length() < 0.5:
 		velocity_2D = velocity_2D.lerp(Vector2.ZERO, breaking_speed)
 		velocity = Vector3(velocity_2D.x, velocity.y, velocity_2D.y)
@@ -59,20 +57,45 @@ func handle_input(delta : float) -> void:
 		velocity_2D = velocity_2D * max_speed
 		
 	velocity = Vector3(velocity_2D.x, velocity.y - gravity, velocity_2D.y)
+
+func handle_camera_input(delta: float) -> void:
+	var input := Vector2.ZERO
+	input = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
+	input *= delta
+	input.y *= -1
+	input = input.limit_length(1.0)
+	camera_target_rotation += Vector3(input.y, input.x, 0)
+	camera_target_rotation.x = clamp(camera_target_rotation.x, -1.2, 0.15)
+	print(camera_target_rotation.x)
 	
+	var delta_rotation : Vector3
+	delta_rotation.x = lerp_angle(
+		third_person_phantom_camera.get_third_person_rotation().x, 
+		camera_target_rotation.x, 
+		delta * 10
+	)
+	delta_rotation.y = lerp_angle(
+		third_person_phantom_camera.get_third_person_rotation().y, 
+		camera_target_rotation.y, 
+		delta * 10
+	)
+	third_person_phantom_camera.set_third_person_rotation(delta_rotation)
 
 func handle_gravity(delta) -> void:
 	gravity += weight * delta
 	if is_on_floor():
 		gravity = 0
 	velocity.y = velocity.y - gravity
+	
+func handle_level_bounds() -> void:
+	if position.y < respawn_height:
+		position = spawn_point.position
 
 func get_normal_move_input() -> Vector2:
 	var input := Vector2.ZERO
-	input.x = Input.get_axis("left", "right")
-	input.y = Input.get_axis("forth", "back")
+	input = Input.get_vector("left", "right", "forth", "back")
 	if input.length() > 0.0:
-		return input.normalized()
+		return input
 	return Vector2.ZERO
 
 func pause_handler() -> void:
