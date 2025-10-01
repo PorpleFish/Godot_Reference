@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://byw8k57yvamnc"]
+
+[ext_resource type="Script" uid="uid://dkwaco3gdcgvs" path="res://Scripts/UI_SoundHandler.gd" id="1_ji33c"]
+
+[node name="UI Sounds" type="Node"]
+process_mode = 3
+script = ExtResource("1_ji33c")

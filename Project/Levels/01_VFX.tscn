@@ -60,7 +60,7 @@ radius = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 3.345525e-08, -8.0768125e-08, 1.7763568e-15, 0.9238795, 0.38268346, 8.7422784e-08, 0.38268346, -0.9238796, -2.0192029e-07, 1.6807672, -2.3096988)
+transform = Transform3D(-1.1920929e-07, -0.38268352, 0.9238795, -2.9802322e-08, 0.9238795, 0.38268352, -1, 2.9802322e-08, -1.1920929e-07, 24.323133, 1.9567086, -1.0689527)
 current = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -174,7 +174,7 @@ shadow_blur = 1.25
 environment = SubResource("Environment_ighwj")
 
 [node name="Third_Person" parent="." node_paths=PackedStringArray("camera", "third_person_phantom_camera", "spawn_point") instance=ExtResource("8_8yp87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7240586, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.013435, 1, -1.0689526)
 acceleration = 50.0
 max_speed = 5.0
 breaking_speed = 0.3
@@ -183,14 +183,15 @@ third_person_phantom_camera = NodePath("../Third_Person_Camera")
 spawn_point = NodePath("../Spawn_Point")
 
 [node name="Spawn_Point" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.075029, 0.96837044, -9.536743e-07)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.013435, 1, -1.0689526)
 
 [node name="Third_Person_Camera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-1, 3.345525e-08, -8.0768125e-08, 1.7763568e-15, 0.9238795, 0.38268346, 8.7422784e-08, 0.38268346, -0.9238796, -2.0192029e-07, 1.6807672, -2.3096988)
+transform = Transform3D(-1.1920929e-07, -0.38268352, 0.9238795, -2.9802322e-08, 0.9238795, 0.38268352, -1, 2.9802322e-08, -1.1920929e-07, 24.323133, 1.9567086, -1.0689527)
 script = ExtResource("6_36k6p")
 follow_mode = 6
 follow_target = NodePath("../Third_Person")
 tween_resource = SubResource("Resource_gwj6c")
+tween_on_load = false
 camera_3d_resource = SubResource("Resource_nbvdm")
 follow_distance = 2.5
 vertical_rotation_offset = 0.39269908169872414

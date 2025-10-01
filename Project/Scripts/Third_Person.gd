@@ -9,6 +9,8 @@ class_name Third_Person
 @export_subgroup("02 - Camera")
 @export var camera : Camera3D
 @export var third_person_phantom_camera : PhantomCamera3D
+@export var camera_horizontal_speed : float = 8.0
+@export var camera_vertical_speed : float = 7.0
 
 @export_subgroup("03 - Gameplay")
 @export var spawn_point : Node3D
@@ -62,12 +64,13 @@ func handle_camera_input(delta: float) -> void:
 	var input := Vector2.ZERO
 	input = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
 	input *= delta
-	input.y *= -1
+	input *= -1
 	input = input.limit_length(1.0)
+	input.x *= camera_horizontal_speed
+	input.y *= camera_vertical_speed
 	camera_target_rotation += Vector3(input.y, input.x, 0)
 	camera_target_rotation.x = clamp(camera_target_rotation.x, -1.2, 0.15)
-	print(camera_target_rotation.x)
-	
+
 	var delta_rotation : Vector3
 	delta_rotation.x = lerp_angle(
 		third_person_phantom_camera.get_third_person_rotation().x, 
