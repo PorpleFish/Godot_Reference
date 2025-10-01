@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0aaxa07cfxs4"]
+[gd_scene load_steps=17 format=3 uid="uid://d0aaxa07cfxs4"]
 
 [ext_resource type="Script" uid="uid://buoogjmndndi6" path="res://Scripts/main_menu.gd" id="1_vtvm2"]
 [ext_resource type="Theme" uid="uid://dvwno78jp3gre" path="res://User_Interface/Themes/T_Main_Menu.tres" id="2_3v0tr"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/S_FishCursor.png" id="4_3v0tr"]
 [ext_resource type="Script" uid="uid://b5thtt02yrneu" path="res://Scripts/Level_Button.gd" id="4_fwf6a"]
 [ext_resource type="Script" uid="uid://ddbuaponwu8hv" path="res://Scripts/Focus_Follow_Cursor.gd" id="4_hrd0q"]
+[ext_resource type="AudioStream" uid="uid://bmrjqwgqxpomc" path="res://Audio/UI/SFX_Open.ogg" id="7_ccn2o"]
+[ext_resource type="AudioStream" uid="uid://bmcnvxan7mti" path="res://Audio/UI/SFX_Close.ogg" id="8_2fncq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ua00h"]
 shader = ExtResource("3_hrd0q")
@@ -586,6 +588,18 @@ theme_override_font_sizes/font_size = 14
 text = "© PorpleFish ・ Porple.Fish"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="Audio_Players" type="Node" parent="."]
+
+[node name="Open level select" type="AudioStreamPlayer" parent="Audio_Players"]
+unique_name_in_owner = true
+stream = ExtResource("7_ccn2o")
+bus = &"User Interface"
+
+[node name="Close level select" type="AudioStreamPlayer" parent="Audio_Players"]
+unique_name_in_owner = true
+stream = ExtResource("8_2fncq")
+bus = &"User Interface"
 
 [connection signal="pressed" from="Main Buttons/Buttons/Start" to="." method="_start_pressed"]
 [connection signal="pressed" from="Main Buttons/Buttons/Options" to="." method="_options_pressed"]

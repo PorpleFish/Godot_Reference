@@ -24,27 +24,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if (state == main_menu_state.LEVEL_SELECT):
-			state = main_menu_state.MAIN
-			ANIMATOR.play_backwards("Start")
-			%Cursor_control.hide_cursor(0.7)
-			%Cursor_control.should_lerp = false
-			Initial_Focus.grab_focus.call_deferred()
-			for button in Menu_Buttons:
-				button.focus_mode = Control.FOCUS_ALL
-			for button in Level_Buttons:
-				button.focus_mode = Control.FOCUS_NONE
-			var follow_tweens : Array[Tween]
-			for index in range(Level_Follows.size()):
-				var progress = 432
-				follow_tweens.push_back(create_tween())
-				follow_tweens[index].set_ease(Tween.EASE_OUT)
-				follow_tweens[index].set_trans(Tween.TRANS_CUBIC)
-				follow_tweens[index].tween_property(Level_Follows[index], "progress", progress, 0.5)
+			_close_level_select()
 	if event.as_text() == "Left Mouse Button":
 		print("Pos is: ", event.position)
 
 func _start_pressed() -> void:
 	ANIMATOR.play("Start")
+	%"Open level select".play()
 	var follow_tweens : Array[Tween]
 	for index in range(Level_Follows.size()):
 		var progress = 430 - (Level_Follows.size() * 25) + index * 50
@@ -61,6 +47,25 @@ func _start_pressed() -> void:
 		button.focus_mode = Control.FOCUS_ALL
 	Level_Focus.grab_focus.call_deferred()
 	state = main_menu_state.LEVEL_SELECT
+
+func _close_level_select() -> void:
+	state = main_menu_state.MAIN
+	ANIMATOR.play_backwards("Start")
+	%"Close level select".play()
+	%Cursor_control.hide_cursor(0.7)
+	%Cursor_control.should_lerp = false
+	Initial_Focus.grab_focus.call_deferred()
+	for button in Menu_Buttons:
+		button.focus_mode = Control.FOCUS_ALL
+	for button in Level_Buttons:
+		button.focus_mode = Control.FOCUS_NONE
+	var follow_tweens : Array[Tween]
+	for index in range(Level_Follows.size()):
+		var progress = 432
+		follow_tweens.push_back(create_tween())
+		follow_tweens[index].set_ease(Tween.EASE_OUT)
+		follow_tweens[index].set_trans(Tween.TRANS_CUBIC)
+		follow_tweens[index].tween_property(Level_Follows[index], "progress", progress, 0.5)
 
 func _options_pressed() -> void:
 	print ("[TODO] Make options menu!")
