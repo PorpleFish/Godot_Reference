@@ -2,18 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fqjx158steui"
-path.s3tc="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
-path.etc2="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.etc2.ctex"
+uid="uid://7tlquf4krlcs"
+path.s3tc="res://.godot/imported/Key_Key_UVs.png-12e0be614f8f8ef720b6efcec5fd4291.s3tc.ctex"
+path.etc2="res://.godot/imported/Key_Key_UVs.png-12e0be614f8f8ef720b6efcec5fd4291.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "426fe147ab6f0da76a3fb9eba6e96a91"
+}
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex", "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.etc2.ctex"]
+source_file="res://Geometry/Props/Key_Key_UVs.png"
+dest_files=["res://.godot/imported/Key_Key_UVs.png-12e0be614f8f8ef720b6efcec5fd4291.s3tc.ctex", "res://.godot/imported/Key_Key_UVs.png-12e0be614f8f8ef720b6efcec5fd4291.etc2.ctex"]
 
 [params]
 
@@ -40,6 +43,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=0
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

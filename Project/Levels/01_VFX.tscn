@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdp0yx32brnsd"]
+[gd_scene load_steps=21 format=3 uid="uid://cdp0yx32brnsd"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_n3381"]
 [ext_resource type="PackedScene" uid="uid://b3y6e64rhj7ou" path="res://Geometry/Maps/01_vfx_zoo_scene.tscn" id="2_36k6p"]
@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://3atya4jmrt5b" path="res://Textures/Sky/qwantani_moon_noon_puresky_4k.hdr" id="4_vjl4k"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_36k6p"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_0mfhx"]
-[ext_resource type="PackedScene" uid="uid://bmsoqyqsq3owr" path="res://Character/CH_Third_Person.tscn" id="8_8yp87"]
+[ext_resource type="PackedScene" uid="uid://bmsoqyqsq3owr" path="res://Character/Third_Person/CH_Third_Person.tscn" id="8_8yp87"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_gwj6c"]
+[ext_resource type="PackedScene" uid="uid://dyi1qlrtaucvv" path="res://Geometry/Props/Key.blend" id="10_nbvdm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
 
@@ -25,7 +26,7 @@ emission_energy_multiplier = 2.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n3381"]
 panorama = ExtResource("4_vjl4k")
-energy_multiplier = 0.15
+energy_multiplier = 0.7
 
 [sub_resource type="Sky" id="Sky_fqrx1"]
 sky_material = SubResource("PanoramaSkyMaterial_n3381")
@@ -33,9 +34,6 @@ sky_material = SubResource("PanoramaSkyMaterial_n3381")
 [sub_resource type="Environment" id="Environment_ighwj"]
 background_mode = 2
 sky = SubResource("Sky_fqrx1")
-ambient_light_source = 2
-ambient_light_color = Color(0.34872884, 0.38515243, 0.4810813, 1)
-ambient_light_energy = 0.35
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
@@ -60,7 +58,7 @@ radius = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-1.1920929e-07, -0.38268352, 0.9238795, -2.9802322e-08, 0.9238795, 0.38268352, -1, 2.9802322e-08, -1.1920929e-07, 24.323133, 1.9567086, -1.0689527)
+transform = Transform3D(-1.1920929e-07, -0.38268352, 0.9238795, -2.9802322e-08, 0.9238795, 0.38268352, -1, 2.9802322e-08, -1.1920929e-07, 16.784662, 1.9567086, 39.62657)
 current = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -165,6 +163,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World"]
 transform = Transform3D(0.258819, 0.683013, -0.683013, 0, 0.707107, 0.707107, 0.965926, -0.183013, 0.183013, 0, 11, 0)
+light_energy = 0.15
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 10.0
@@ -174,7 +173,7 @@ shadow_blur = 1.25
 environment = SubResource("Environment_ighwj")
 
 [node name="Third_Person" parent="." node_paths=PackedStringArray("camera", "third_person_phantom_camera", "spawn_point") instance=ExtResource("8_8yp87")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.013435, 1, -1.0689526)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.474964, 1, 39.62657)
 acceleration = 50.0
 max_speed = 5.0
 breaking_speed = 0.3
@@ -186,7 +185,7 @@ spawn_point = NodePath("../Spawn_Point")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.013435, 1, -1.0689526)
 
 [node name="Third_Person_Camera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-1.1920929e-07, -0.38268352, 0.9238795, -2.9802322e-08, 0.9238795, 0.38268352, -1, 2.9802322e-08, -1.1920929e-07, 24.323133, 1.9567086, -1.0689527)
+transform = Transform3D(-1.1920929e-07, -0.38268352, 0.9238795, -2.9802322e-08, 0.9238795, 0.38268352, -1, 2.9802322e-08, -1.1920929e-07, 16.784662, 1.9567086, 39.62657)
 script = ExtResource("6_36k6p")
 follow_mode = 6
 follow_target = NodePath("../Third_Person")
@@ -200,3 +199,6 @@ spring_length = 2.5
 collision_mask = 2
 shape = SubResource("SphereShape3D_gwj6c")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Key" parent="." instance=ExtResource("10_nbvdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061921597, 2.4792373, 41.08069)

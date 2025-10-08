@@ -1,14 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3y6e64rhj7ou"]
+[gd_scene load_steps=2 format=3 uid="uid://b3y6e64rhj7ou"]
 
 [ext_resource type="PackedScene" uid="uid://usrecwemelg7" path="res://Geometry/Maps/01_VFX_Zoo.blend" id="1_jl5ib"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jl5ib"]
-size = Vector3(45.89, 1, 48.59)
-
 [node name="01_VFX_Zoo_Scene" instance=ExtResource("1_jl5ib")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5987878, 0)
-shape = SubResource("BoxShape3D_jl5ib")

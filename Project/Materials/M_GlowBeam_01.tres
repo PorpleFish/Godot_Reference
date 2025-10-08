@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cythdiuuas8jj"]
 
-[ext_resource type="Shader" uid="uid://ctfckrapi5cjy" path="res://Shaders/Mesh_Special/LightBeam.gdshader" id="1_62ldr"]
+[ext_resource type="Shader" uid="uid://ctfckrapi5cjy" path="res://Shaders/Fake_Lights/LightBeam.gdshader" id="1_62ldr"]
 
 [sub_resource type="Gradient" id="Gradient_62ldr"]
 offsets = PackedFloat32Array(0, 0.09375, 0.185764, 0.319444, 0.418403, 0.555556, 0.739583, 0.875)

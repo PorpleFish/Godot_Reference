@@ -273,7 +273,7 @@ script = ExtResource("1_vtvm2")
 Initial_Focus = NodePath("Main Buttons/Buttons/Start")
 Level_Focus = NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX")
 Level_Follows = [NodePath("Circle/Level_Select_Path/UI_Follow_01"), NodePath("Circle/Level_Select_Path/UI_Follow_02"), NodePath("Circle/Level_Select_Path/UI_Follow_03"), NodePath("Circle/Level_Select_Path/UI_Follow_04"), NodePath("Circle/Level_Select_Path/UI_Follow_05"), NodePath("Circle/Level_Select_Path/UI_Follow_06"), NodePath("Circle/Level_Select_Path/UI_Follow_07"), NodePath("Circle/Level_Select_Path/UI_Follow_08")]
-Level_Buttons = [NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX"), NodePath("Circle/Level_Select_Path/UI_Follow_02/Dialogue"), NodePath("Circle/Level_Select_Path/UI_Follow_03/Mini Games"), NodePath("Circle/Level_Select_Path/UI_Follow_04/Cameras"), NodePath("Circle/Level_Select_Path/UI_Follow_05/Vehicles"), NodePath("Circle/Level_Select_Path/UI_Follow_06/AI Behaviour"), NodePath("Circle/Level_Select_Path/UI_Follow_07/Networking"), NodePath("Circle/Level_Select_Path/UI_Follow_08/Animation")]
+Level_Buttons = [NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX"), NodePath("Circle/Level_Select_Path/UI_Follow_02/Dialogue"), NodePath("Circle/Level_Select_Path/UI_Follow_03/Character Animation"), NodePath("Circle/Level_Select_Path/UI_Follow_04/Cameras"), NodePath("Circle/Level_Select_Path/UI_Follow_05/Vehicles"), NodePath("Circle/Level_Select_Path/UI_Follow_06/AI Behaviour"), NodePath("Circle/Level_Select_Path/UI_Follow_07/Networking"), NodePath("Circle/Level_Select_Path/UI_Follow_08/Mini Games")]
 Menu_Buttons = [NodePath("Main Buttons/Buttons/Start"), NodePath("Main Buttons/Buttons/Options"), NodePath("Main Buttons/Buttons/Quit")]
 metadata/_edit_use_anchors_ = true
 
@@ -415,7 +415,7 @@ progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Mini Games" type="Button" parent="Circle/Level_Select_Path/UI_Follow_03"]
+[node name="Character Animation" type="Button" parent="Circle/Level_Select_Path/UI_Follow_03"]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -426,9 +426,11 @@ offset_right = 248.79346
 offset_bottom = 14.536089
 grow_vertical = 2
 theme = ExtResource("2_3v0tr")
-disabled = true
-text = "Mini Games"
+text = "Character Animation
+"
 alignment = 0
+script = ExtResource("4_fwf6a")
+level_path = "res://Levels/03_Character_Animation.tscn"
 
 [node name="UI_Follow_04" type="PathFollow2D" parent="Circle/Level_Select_Path"]
 position = Vector2(678.751, 350.00876)
@@ -522,7 +524,7 @@ progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Animation" type="Button" parent="Circle/Level_Select_Path/UI_Follow_08"]
+[node name="Mini Games" type="Button" parent="Circle/Level_Select_Path/UI_Follow_08"]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -534,7 +536,8 @@ offset_bottom = 14.536089
 grow_vertical = 2
 theme = ExtResource("2_3v0tr")
 disabled = true
-text = "Animation"
+text = "Mini Games
+"
 alignment = 0
 
 [node name="Cursor_control" type="Control" parent="."]

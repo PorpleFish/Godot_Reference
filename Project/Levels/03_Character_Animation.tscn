@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://x4npadqeb3ay"]
+
+[ext_resource type="PackedScene" uid="uid://b3y6e64rhj7ou" path="res://Geometry/Maps/01_vfx_zoo_scene.tscn" id="1_t17n3"]
+[ext_resource type="PackedScene" uid="uid://7q1p14q8hj7s" path="res://Character/Third_Person/Crystale.blend" id="2_nmjxv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmjxv"]
+
+[sub_resource type="Sky" id="Sky_hmegp"]
+sky_material = SubResource("ProceduralSkyMaterial_nmjxv")
+
+[sub_resource type="Environment" id="Environment_kkvoo"]
+background_mode = 2
+background_color = Color(0.20489258, 0.30755234, 0.73845553, 1)
+sky = SubResource("Sky_hmegp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_hmegp"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkvoo"]
+albedo_color = Color(0.21777907, 0.62157637, 0.6020513, 1)
+
+[node name="03CharacterAnimation" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kkvoo")
+
+[node name="01_VFX_Zoo_Scene" parent="." instance=ExtResource("1_t17n3")]
+
+[node name="Crystale" parent="." instance=ExtResource("2_nmjxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267735, -0.098533645, 3.7875223)
+
+[node name="Skeleton3D" parent="Crystale/Crystale_ARM" index="0"]
+bones/1/rotation = Quaternion(-0.030365827, 3.2319115e-17, 3.2319108e-17, 0.99953884)
+bones/2/rotation = Quaternion(-0.027339442, -1.3161525e-16, -1.4168611e-16, 0.9996262)
+bones/3/rotation = Quaternion(-0.2672426, -3.0963756e-23, 5.9339767e-17, 0.96362936)
+bones/4/rotation = Quaternion(0.4123125, 4.1216584e-23, -9.15517e-17, 0.9110425)
+bones/5/rotation = Quaternion(-0.02783057, 1.1916317e-07, -3.3176641e-09, 0.9996127)
+bones/8/rotation = Quaternion(-0.14265823, 0.08388276, -0.57403773, 0.8019308)
+bones/9/rotation = Quaternion(0.0637136, 0.014604488, -0.19610712, 0.9784014)
+bones/10/rotation = Quaternion(0.10485941, -0.003336375, 0.026155755, 0.99413747)
+bones/17/rotation = Quaternion(-0.14265822, -0.08388275, 0.57403773, 0.8019308)
+bones/18/rotation = Quaternion(0.0637136, -0.014604488, 0.19610712, 0.9784014)
+bones/19/rotation = Quaternion(0.10485941, 0.003336375, -0.026155755, 0.99413747)
+bones/26/rotation = Quaternion(0.008405833, 0.11564804, 0.9930798, -0.018639665)
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Crystale/Crystale_ARM/Skeleton3D" index="1"]
+target_node = NodePath("../../../../LookAt")
+bone_name = "D_Head"
+bone = 5
+use_secondary_rotation = false
+duration = 1.0
+ease_type = 2
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 3.1415927
+primary_damp_threshold = 1.0
+
+[node name="LookAt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.444265, 0.8779659, 5.127002)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LookAt"]
+mesh = SubResource("SphereMesh_hmegp")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkvoo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94035345, 0.34019902, 0, -0.34019902, 0.94035345, 14.315092, 1.1628358, 5.597798)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.97372615, 0, -0.22772211, 0.16298738, 0.6983779, 0.6969244, 0.15903607, -0.7157293, 0.6800288, 0, 0, 0)
+
+[editable path="Crystale"]
