@@ -28,10 +28,14 @@ func _process(_delta: float) -> void:
 		pause_handler()
 
 func _physics_process(delta: float) -> void:
-	handle_gravity(delta)
+	handle_gravity(delta)	
 	handle_input(delta)
 	handle_camera_input(delta)
 	handle_level_bounds()
+
+	if get_last_slide_collision() != null:
+		#print(get_last_slide_collision().get_collider(0).constant_linear_velocity )
+		velocity += get_last_slide_collision().get_collider(0).constant_linear_velocity
 	
 	move_and_slide()
 	# If the character is moving, rotate in the flattened movement direction.
