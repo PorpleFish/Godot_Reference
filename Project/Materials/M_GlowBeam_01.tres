@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cythdiuuas8jj"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cythdiuuas8jj"]
 
 [ext_resource type="Shader" uid="uid://ctfckrapi5cjy" path="res://Shaders/Fake_Lights/LightBeam.gdshader" id="1_62ldr"]
 

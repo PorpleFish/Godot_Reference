@@ -9,5 +9,5 @@ void fragment() {
 }
 
 void light() {
-	SPECULAR_LIGHT = dot(normalize(VIEW + LIGHT), NORMAL);
+	SPECULAR_LIGHT = vec3(dot(normalize(VIEW + LIGHT), NORMAL));
 }

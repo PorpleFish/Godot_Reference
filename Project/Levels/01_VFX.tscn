@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cdp0yx32brnsd"]
+[gd_scene format=4 uid="uid://cdp0yx32brnsd"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_n3381"]
 [ext_resource type="PackedScene" uid="uid://b3y6e64rhj7ou" path="res://Geometry/Maps/01_vfx_zoo_scene.tscn" id="2_36k6p"]
@@ -8,13 +8,10 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_36k6p"]
 [ext_resource type="Script" uid="uid://drhbpihwkthf8" path="res://Geometry/Props/Item_bobber.gd" id="6_whyjp"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_0mfhx"]
-[ext_resource type="Shader" uid="uid://ctltqw1037pvm" path="res://Shaders/Stylized_Lit/Rim Light.gdshader" id="7_u4p4l"]
+[ext_resource type="Shader" uid="uid://cpjuf4m1xo4qw" path="res://Shaders/Stylized_Lit/Gummy.gdshader" id="7_l4guu"]
 [ext_resource type="PackedScene" uid="uid://bmsoqyqsq3owr" path="res://Character/Third_Person/CH_Third_Person.tscn" id="8_8yp87"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_gwj6c"]
 [ext_resource type="PackedScene" uid="uid://dyi1qlrtaucvv" path="res://Geometry/Props/Key.blend" id="10_nbvdm"]
-[ext_resource type="PackedScene" uid="uid://ccwnqadxr6v8p" path="res://Geometry/Vehicles/Trains.blend" id="11_l4guu"]
-[ext_resource type="Script" uid="uid://c27iqy1ee8evm" path="res://Scripts/train_mover.gd" id="12_tsf6l"]
-[ext_resource type="Script" uid="uid://cnrei8a623vfk" path="res://Scripts/moving_platform.gd" id="12_xovvo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vjl4k"]
 
@@ -31,8 +28,7 @@ emission_energy_multiplier = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4p4l"]
 render_priority = 0
-shader = ExtResource("7_u4p4l")
-shader_parameter/power = 3.525
+shader = ExtResource("7_l4guu")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hwkqk"]
 _surfaces = [{
@@ -71,9 +67,6 @@ metadata/extras = {
 "hops": {}
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l4guu"]
-size = Vector3(2.715, 0.78, 5.34)
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n3381"]
 panorama = ExtResource("4_vjl4k")
 energy_multiplier = 0.7
@@ -105,121 +98,113 @@ metadata/_custom_type_script = "uid://b8hhnqsugykly"
 [sub_resource type="SphereShape3D" id="SphereShape3D_gwj6c"]
 radius = 0.2
 
-[sub_resource type="Curve3D" id="Curve3D_xovvo"]
-closed = true
-_data = {
-"points": PackedVector3Array(2.3563938, 0, -2.16296, -2.3563938, 0, 2.16296, -5.823309, 0, 6.481558, -1.0939903, 0, -1.9364395, 1.0939903, 0, 1.9364395, -5.7891407, 0, 19.848501, -4.5017633, 0, -1.6881638, 4.5017633, 0, 1.6881638, 4.0075226, 0, 27.341333, -5.433775, 0, 2.1102028, 5.433775, 0, -2.1102028, 21.371634, 0, 26.832258, 0.48244095, 0, 7.4778557, -0.48244095, 0, -7.4778557, 23.903145, 0, 7.398218, 4.990261, 0, -0.45228958, -4.990261, 0, 0.45228958, 15.979761, 0, -1.0311832, 2.93709, 0, -2.4320965, -2.93709, 0, 2.4320965, 9.662806, 0, 7.733206, 1.931448, 0, 1.0007896, -1.931448, 0, -1.0007896, 2.2485313, 0, 3.964613),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 8
+[node name="VFX_Zoo" type="Node3D" unique_id=1975428268]
 
-[node name="VFX_Zoo" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=611296461]
 physics_interpolation_mode = 1
 transform = Transform3D(5.9604645e-08, 0.3826834, -0.9238795, -1.4901161e-08, 0.92387956, 0.3826834, 1, -1.4901161e-08, 5.9604645e-08, 4.536099, 2.384843, 40.00643)
 current = true
 
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1662566094]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_n3381")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="Geo" type="Node3D" parent="."]
+[node name="Geo" type="Node3D" parent="." unique_id=588210201]
 
-[node name="01_VFX_Zoo_Scene" parent="Geo" instance=ExtResource("2_36k6p")]
+[node name="01_VFX_Zoo_Scene" parent="Geo" unique_id=721787279 instance=ExtResource("2_36k6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.012926102)
 
-[node name="GodRays" type="Node3D" parent="Geo"]
+[node name="GodRays" type="Node3D" parent="Geo" unique_id=595842946]
 transform = Transform3D(0.999997, 0.000679869, 0.0022396, -0.000675487, 0.999998, -0.00196312, -0.00224092, 0.00196161, 0.999996, 0, 0, 0)
 
-[node name="Ray_01" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="Ray_01" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1085494899]
 transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 7.35537)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("")
 
-[node name="Ray_02" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="Ray_02" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1371551507]
 transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 4.59743)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("")
 
-[node name="Ray_03" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="Ray_03" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1401167846]
 transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, 1.85938)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("")
 
-[node name="Ray_04" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="Ray_04" type="MeshInstance3D" parent="Geo/GodRays" unique_id=646547711]
 transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -1.87949)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("")
 
-[node name="Ray_05" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="Ray_05" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1373297777]
 transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -4.68539)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("")
 
-[node name="Ray_06" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="Ray_06" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1382534959]
 transform = Transform3D(6.71812e-08, 0.5, 3.64362, -4.57921e-08, 0.866025, -2.10365, -0.80722, 0, 5.51721e-07, -1.55393, 2.05078, -7.36773)
 material_override = ExtResource("2_45mn3")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vjl4k")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1946286360]
 transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689037, 7.3848)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1656916491]
 transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, 4.67142)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Geo/GodRays" unique_id=2045515647]
 transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, 1.84289)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Geo/GodRays" unique_id=464558940]
 transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -1.89594)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Geo/GodRays" unique_id=1671381914]
 transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -4.60933)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Geo/GodRays"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Geo/GodRays" unique_id=354110340]
 transform = Transform3D(1.69278, 0.494479, 2.09548e-09, 0.0165167, 0.723973, -6.98492e-09, 5.54137e-08, 4.54893e-08, 1.11062, 1.30164, -0.0689036, -7.43787)
 material_override = ExtResource("3_j6igm")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_n3381")
 
-[node name="Light" type="MeshInstance3D" parent="Geo"]
+[node name="Light" type="MeshInstance3D" parent="Geo" unique_id=1247619198]
 transform = Transform3D(-0.2588191, 0.9659258, 0, -0.9659258, -0.2588191, 0, 0, 0, 8.66537, -4.750521, 3.70816, 0)
 cast_shadow = 2
 mesh = SubResource("PlaneMesh_45mn3")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_j6igm")
 
-[node name="Key" parent="Geo" instance=ExtResource("10_nbvdm")]
+[node name="Key" parent="Geo" unique_id=1959137904 instance=ExtResource("10_nbvdm")]
 transform = Transform3D(0.9817141, 0.0023645165, 0.1903464, -0.0024085522, 0.9999971, 0, -0.19034584, -0.00045845922, 0.981717, 0.061921597, 2.4792373, 41.08069)
 script = ExtResource("6_whyjp")
 up_speed = 1.0
@@ -231,20 +216,9 @@ down_transition = 7
 [node name="SM_DNG_Key" parent="Geo/Key" index="0"]
 mesh = SubResource("ArrayMesh_whyjp")
 
-[node name="Trains" parent="Geo" instance=ExtResource("11_l4guu")]
-transform = Transform3D(-0.999945, 0, -0.007998587, 0, 1, 0, 0.007998587, 0, -0.999945, 18.858932, 0, 33.422745)
+[node name="Lighting_World" type="Node3D" parent="." unique_id=246381933]
 
-[node name="AnimatableBody3D" type="StaticBody3D" parent="Geo/Trains"]
-script = ExtResource("12_xovvo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Trains/AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39, 0)
-shape = SubResource("BoxShape3D_l4guu")
-disabled = true
-
-[node name="Lighting_World" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting_World" unique_id=533845559]
 transform = Transform3D(0.258819, 0.683013, -0.683013, 0, 0.707107, 0.707107, 0.965926, -0.183013, 0.183013, 0, 11, 0)
 light_energy = 0.15
 shadow_enabled = true
@@ -252,13 +226,13 @@ shadow_bias = 0.0
 shadow_normal_bias = 10.0
 shadow_blur = 1.25
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting_World"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting_World" unique_id=741248354]
 environment = SubResource("Environment_ighwj")
 
-[node name="Spawn_Point" type="Node3D" parent="."]
+[node name="Spawn_Point" type="Node3D" parent="." unique_id=1799677904]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.013435, 1, -1.0689526)
 
-[node name="Third_Person_Camera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+[node name="Third_Person_Camera" type="Node3D" parent="." unique_id=1131540668 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(5.9604645e-08, 0.3826834, -0.9238795, -1.4901161e-08, 0.92387956, 0.3826834, 1, -1.4901161e-08, 5.9604645e-08, 4.536099, 2.384843, 40.00643)
 script = ExtResource("6_36k6p")
 follow_mode = 6
@@ -274,7 +248,7 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_gwj6c")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="Third_Person" parent="." node_paths=PackedStringArray("camera", "third_person_phantom_camera", "spawn_point") instance=ExtResource("8_8yp87")]
+[node name="Third_Person" parent="." unique_id=755356693 node_paths=PackedStringArray("camera", "third_person_phantom_camera", "spawn_point") instance=ExtResource("8_8yp87")]
 transform = Transform3D(1.3119492e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.3119492e-07, 6.8457975, 1.4281347, 40.00643)
 acceleration = 50.0
 max_speed = 5.0
@@ -282,20 +256,5 @@ breaking_speed = 0.3
 camera = NodePath("../Camera3D")
 third_person_phantom_camera = NodePath("../Third_Person_Camera")
 spawn_point = NodePath("../Spawn_Point")
-
-[node name="train_track" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.003435, 0, 21.472776)
-curve = SubResource("Curve3D_xovvo")
-debug_custom_color = Color(0.48925847, 0.97151476, 0.8275653, 1)
-
-[node name="train_mover" type="PathFollow3D" parent="train_track" node_paths=PackedStringArray("remote_transform")]
-transform = Transform3D(-0.999945, 0, -0.007998587, 0, 1, 0, 0.007998587, 0, -0.999945, -7.1445017, 0, 11.949968)
-progress = 5.7579346
-script = ExtResource("12_tsf6l")
-remote_transform = NodePath("train_remote_transform")
-meters_per_second = 8.0
-
-[node name="train_remote_transform" type="RemoteTransform3D" parent="train_track/train_mover"]
-remote_path = NodePath("../../../Geo/Trains")
 
 [editable path="Geo/Key"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://taxcepbcv8vw"]
+
+[ext_resource type="Script" uid="uid://jhbkb1pdwh6k" path="res://Scripts/first_person.gd" id="1_umkx8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tabot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j07yq"]
+
+[node name="First Person" type="CharacterBody3D" unique_id=2067413659]
+script = ExtResource("1_umkx8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=707093990]
+mesh = SubResource("CapsuleMesh_tabot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=109448563]
+shape = SubResource("CapsuleShape3D_j07yq")
+
+[node name="Head" type="Node3D" parent="." unique_id=1921316964]
+
+[node name="First_Person_Camera" type="Camera3D" parent="Head" unique_id=373982819]
+current = true

@@ -51,7 +51,7 @@ func _start_pressed() -> void:
 func _close_level_select() -> void:
 	state = main_menu_state.MAIN
 	ANIMATOR.play_backwards("Start")
-	%"Close level select".play()
+	%"Close level select".play()			
 	%Cursor_control.hide_cursor(0.7)
 	%Cursor_control.should_lerp = false
 	Initial_Focus.grab_focus.call_deferred()

@@ -11,6 +11,8 @@ class_name Third_Person
 @export var third_person_phantom_camera : PhantomCamera3D
 @export var camera_horizontal_speed : float = 8.0
 @export var camera_vertical_speed : float = 7.0
+@export var camera_mouse_horizontal_speed : float = 1.0
+@export var camera_mouse_vertical_speed : float = 0.6
 
 @export_subgroup("03 - Gameplay")
 @export var spawn_point : Node3D
@@ -23,14 +25,20 @@ var target_rotation : float
 var pause_menu : Control
 var camera_target_rotation : Vector3
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_handler()
 
 func _physics_process(delta: float) -> void:
-	handle_gravity(delta)	
-	handle_input(delta)
-	handle_camera_input(delta)
+	handle_gravity(delta)
+	if is_possessed:
+		handle_input(delta)
+		handle_camera_input(delta)
+	
 	handle_level_bounds()
 
 	if get_last_slide_collision() != null:
@@ -43,9 +51,8 @@ func _physics_process(delta: float) -> void:
 		target_rotation = Vector2(velocity.z, velocity.x).angle()
 	rotation.y = lerp_angle(rotation.y, target_rotation, delta * 10)
 
+
 func handle_input(delta : float) -> void:
-	if !is_possessed:
-		return
 	var input = get_normal_move_input()
 	var velocity_2D = Vector2(velocity.x, velocity.z)
 	
@@ -64,14 +71,23 @@ func handle_input(delta : float) -> void:
 		
 	velocity = Vector3(velocity_2D.x, velocity.y - gravity, velocity_2D.y)
 
+
 func handle_camera_input(delta: float) -> void:
 	var input := Vector2.ZERO
-	input = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
-	input *= delta
-	input *= -1
-	input = input.limit_length(1.0)
-	input.x *= camera_horizontal_speed
-	input.y *= camera_vertical_speed
+	
+	# If using the mouse for input
+	if Input.get_last_mouse_screen_velocity().length() > 1: 
+		input = Input.get_last_mouse_velocity()
+		input *= -delta
+		input.x *= camera_mouse_horizontal_speed
+		input.y *= camera_mouse_vertical_speed
+	else:
+		input = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
+		input *= -delta
+		input = input.limit_length(1.0)
+		input.x *= camera_horizontal_speed
+		input.y *= camera_vertical_speed
+		
 	camera_target_rotation += Vector3(input.y, input.x, 0)
 	camera_target_rotation.x = clamp(camera_target_rotation.x, -1.2, 0.15)
 
@@ -79,24 +95,27 @@ func handle_camera_input(delta: float) -> void:
 	delta_rotation.x = lerp_angle(
 		third_person_phantom_camera.get_third_person_rotation().x, 
 		camera_target_rotation.x, 
-		delta * 10
+		delta
 	)
 	delta_rotation.y = lerp_angle(
 		third_person_phantom_camera.get_third_person_rotation().y, 
 		camera_target_rotation.y, 
-		delta * 10
+		delta
 	)
 	third_person_phantom_camera.set_third_person_rotation(delta_rotation)
+
 
 func handle_gravity(delta) -> void:
 	gravity += weight * delta
 	if is_on_floor():
 		gravity = 0
 	velocity.y = velocity.y - gravity
-	
+
+
 func handle_level_bounds() -> void:
 	if position.y < respawn_height:
 		position = spawn_point.position
+
 
 func get_normal_move_input() -> Vector2:
 	var input := Vector2.ZERO
@@ -104,6 +123,7 @@ func get_normal_move_input() -> Vector2:
 	if input.length() > 0.0:
 		return input
 	return Vector2.ZERO
+
 
 func pause_handler() -> void:
 	if is_paused:
@@ -115,6 +135,7 @@ func pause_handler() -> void:
 		pause_menu = pause_scene.instantiate()
 		pause_menu.connect("resume_game", unpause_handler)
 		add_child(pause_menu)
+
 
 func unpause_handler() -> void:
 	is_paused = false

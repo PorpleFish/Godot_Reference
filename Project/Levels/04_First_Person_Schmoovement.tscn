@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://clq0tfxlx71js"]
+
+[ext_resource type="PackedScene" uid="uid://hkp17s7iji0c" path="res://Geometry/Maps/04_First_Person_Schmovement.blend" id="1_j07yq"]
+[ext_resource type="PackedScene" uid="uid://taxcepbcv8vw" path="res://Character/First_Person/first_person.tscn" id="2_tabot"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r8t7e"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.13156933, 0.15951023, 0.23648286, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.1468296, 0.1378597, 0.095245056, 1)
+
+[sub_resource type="Sky" id="Sky_u1mo5"]
+sky_material = SubResource("ProceduralSkyMaterial_r8t7e")
+
+[sub_resource type="Environment" id="Environment_pdk12"]
+background_mode = 2
+sky = SubResource("Sky_u1mo5")
+
+[node name="04FirstPersonSchmoovement" type="Node3D" unique_id=1912999269]
+
+[node name="04_First_Person_Schmovement" parent="." unique_id=1085476538 instance=ExtResource("1_j07yq")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=173063396]
+environment = SubResource("Environment_pdk12")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1297577802]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.8660254, 0, -0.8660254, 0.49999997, 0, 12.104782, 7.453979)
+light_color = Color(0.7075506, 0.78530824, 0.9436605, 1)
+light_energy = 0.2
+
+[node name="First Person" parent="." unique_id=2067413659 instance=ExtResource("2_tabot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.089959, 1, 10.133196)
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_max_angle = 1.2217305
