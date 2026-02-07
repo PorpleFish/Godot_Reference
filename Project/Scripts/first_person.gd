@@ -36,13 +36,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_velocity
 
 	# horizontal movement
-	var get_speed_scalar = func (x): return x ** 2
+	var speed_scalar : float = sprint_speed if Input.is_action_pressed("sprint") else walk_speed
 	var input_direction = Input.get_vector("left", "right", "forth", "back")
 	var direction = (head.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	if is_on_floor():
 		if direction:
-			velocity.x = direction.x * (sprint_speed if Input.is_action_pressed("sprint") else walk_speed) * delta
-			velocity.z = direction.z * (sprint_speed if Input.is_action_pressed("sprint") else walk_speed) * delta
+			velocity.x = direction.x * (speed_scalar) * delta
+			velocity.z = direction.z * (speed_scalar) * delta
 		else:
 			velocity.x = 0.0
 			velocity.z = 0.0
