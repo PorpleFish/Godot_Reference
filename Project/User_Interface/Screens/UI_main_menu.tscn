@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0aaxa07cfxs4"]
+[gd_scene format=3 uid="uid://d0aaxa07cfxs4"]
 
 [ext_resource type="Script" uid="uid://buoogjmndndi6" path="res://Scripts/main_menu.gd" id="1_vtvm2"]
 [ext_resource type="Theme" uid="uid://dvwno78jp3gre" path="res://User_Interface/Themes/T_Main_Menu.tres" id="2_3v0tr"]
 [ext_resource type="Shader" uid="uid://crra077vkvppx" path="res://Shaders/UI/Circle.gdshader" id="3_hrd0q"]
-[ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/S_FishCursor.png" id="4_3v0tr"]
+[ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/UI/S_FishCursor.png" id="4_3v0tr"]
 [ext_resource type="Script" uid="uid://b5thtt02yrneu" path="res://Scripts/Level_Button.gd" id="4_fwf6a"]
 [ext_resource type="Script" uid="uid://ddbuaponwu8hv" path="res://Scripts/Focus_Follow_Cursor.gd" id="4_hrd0q"]
 [ext_resource type="AudioStream" uid="uid://bmrjqwgqxpomc" path="res://Audio/UI/SFX_Open.ogg" id="7_ccn2o"]
@@ -260,7 +260,7 @@ _data = {
 &"Start": SubResource("Animation_fwf6a")
 }
 
-[node name="Main Menu" type="Control" node_paths=PackedStringArray("Initial_Focus", "Level_Focus", "Level_Follows", "Level_Buttons", "Menu_Buttons")]
+[node name="Main Menu" type="Control" unique_id=1688829542 node_paths=PackedStringArray("Initial_Focus", "Level_Focus", "Level_Follows", "Level_Buttons", "Menu_Buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,11 +273,11 @@ script = ExtResource("1_vtvm2")
 Initial_Focus = NodePath("Main Buttons/Buttons/Start")
 Level_Focus = NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX")
 Level_Follows = [NodePath("Circle/Level_Select_Path/UI_Follow_01"), NodePath("Circle/Level_Select_Path/UI_Follow_02"), NodePath("Circle/Level_Select_Path/UI_Follow_03"), NodePath("Circle/Level_Select_Path/UI_Follow_04"), NodePath("Circle/Level_Select_Path/UI_Follow_05"), NodePath("Circle/Level_Select_Path/UI_Follow_06"), NodePath("Circle/Level_Select_Path/UI_Follow_07"), NodePath("Circle/Level_Select_Path/UI_Follow_08")]
-Level_Buttons = [NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX"), NodePath("Circle/Level_Select_Path/UI_Follow_02/Dialogue"), NodePath("Circle/Level_Select_Path/UI_Follow_03/Character Animation"), NodePath("Circle/Level_Select_Path/UI_Follow_04/Cameras"), NodePath("Circle/Level_Select_Path/UI_Follow_05/Vehicles"), NodePath("Circle/Level_Select_Path/UI_Follow_06/AI Behaviour"), NodePath("Circle/Level_Select_Path/UI_Follow_07/Networking"), NodePath("Circle/Level_Select_Path/UI_Follow_08/Mini Games")]
+Level_Buttons = [NodePath("Circle/Level_Select_Path/UI_Follow_01/VFX"), NodePath("Circle/Level_Select_Path/UI_Follow_02/Dialogue"), NodePath("Circle/Level_Select_Path/UI_Follow_03/Character Animation"), NodePath("Circle/Level_Select_Path/UI_Follow_04/First Person Movement"), NodePath("Circle/Level_Select_Path/UI_Follow_05/Top Down RPG"), NodePath("Circle/Level_Select_Path/UI_Follow_06/AI Behaviour"), NodePath("Circle/Level_Select_Path/UI_Follow_07/Networking"), NodePath("Circle/Level_Select_Path/UI_Follow_08/Mini Games")]
 Menu_Buttons = [NodePath("Main Buttons/Buttons/Start"), NodePath("Main Buttons/Buttons/Options"), NodePath("Main Buttons/Buttons/Quit")]
 metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=2089244021]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -288,7 +288,7 @@ grow_vertical = 2
 scale = Vector2(0.9956994, 1.0043336)
 color = Color(0, 0, 0, 1)
 
-[node name="Main Buttons" type="Control" parent="."]
+[node name="Main Buttons" type="Control" parent="." unique_id=2020270208]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -296,7 +296,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Main Buttons"]
+[node name="Title" type="Label" parent="Main Buttons" unique_id=1651403613]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 155.0
@@ -306,7 +306,7 @@ theme = ExtResource("2_3v0tr")
 theme_type_variation = &"GraphFrameTitleLabel"
 text = "Godot Reference"
 
-[node name="Buttons" type="VBoxContainer" parent="Main Buttons"]
+[node name="Buttons" type="VBoxContainer" parent="Main Buttons" unique_id=819253741]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -316,33 +316,33 @@ offset_right = 304.0
 offset_bottom = -275.0
 grow_vertical = 2
 
-[node name="Start" type="Button" parent="Main Buttons/Buttons"]
+[node name="Start" type="Button" parent="Main Buttons/Buttons" unique_id=2063768516]
 layout_mode = 2
 theme = ExtResource("2_3v0tr")
 text = "Start"
 alignment = 0
 
-[node name="Spacer_01" type="Control" parent="Main Buttons/Buttons"]
+[node name="Spacer_01" type="Control" parent="Main Buttons/Buttons" unique_id=1640032465]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Options" type="Button" parent="Main Buttons/Buttons"]
+[node name="Options" type="Button" parent="Main Buttons/Buttons" unique_id=1331152739]
 layout_mode = 2
 theme = ExtResource("2_3v0tr")
 text = "Options"
 alignment = 0
 
-[node name="Spacer_02" type="Control" parent="Main Buttons/Buttons"]
+[node name="Spacer_02" type="Control" parent="Main Buttons/Buttons" unique_id=2034440310]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Quit" type="Button" parent="Main Buttons/Buttons"]
+[node name="Quit" type="Button" parent="Main Buttons/Buttons" unique_id=183107536]
 layout_mode = 2
 theme = ExtResource("2_3v0tr")
 text = "Quit"
 alignment = 0
 
-[node name="Circle" type="Panel" parent="."]
+[node name="Circle" type="Panel" parent="." unique_id=1299618073]
 z_index = 1
 material = SubResource("ShaderMaterial_ua00h")
 layout_mode = 1
@@ -357,19 +357,19 @@ offset_bottom = -170.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Level_Select_Path" type="Path2D" parent="Circle"]
+[node name="Level_Select_Path" type="Path2D" parent="Circle" unique_id=1404515148]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-184.9437, -30.938622)
 scale = Vector2(1.2482073, 1.0013405)
 curve = SubResource("Curve2D_hrd0q")
 
-[node name="UI_Follow_01" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_01" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=377155223]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="VFX" type="Button" parent="Circle/Level_Select_Path/UI_Follow_01"]
+[node name="VFX" type="Button" parent="Circle/Level_Select_Path/UI_Follow_01" unique_id=1924042310]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -386,13 +386,13 @@ alignment = 0
 script = ExtResource("4_fwf6a")
 level_path = "res://Levels/01_VFX.tscn"
 
-[node name="UI_Follow_02" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_02" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=1110909663]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Dialogue" type="Button" parent="Circle/Level_Select_Path/UI_Follow_02"]
+[node name="Dialogue" type="Button" parent="Circle/Level_Select_Path/UI_Follow_02" unique_id=1566072425]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -409,13 +409,13 @@ alignment = 0
 script = ExtResource("4_fwf6a")
 level_path = "res://Levels/02_Dialogue.tscn"
 
-[node name="UI_Follow_03" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_03" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=1840599003]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Character Animation" type="Button" parent="Circle/Level_Select_Path/UI_Follow_03"]
+[node name="Character Animation" type="Button" parent="Circle/Level_Select_Path/UI_Follow_03" unique_id=1443843144]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -432,13 +432,13 @@ alignment = 0
 script = ExtResource("4_fwf6a")
 level_path = "res://Levels/03_Character_Animation.tscn"
 
-[node name="UI_Follow_04" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_04" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=639661816]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Cameras" type="Button" parent="Circle/Level_Select_Path/UI_Follow_04"]
+[node name="First Person Movement" type="Button" parent="Circle/Level_Select_Path/UI_Follow_04" unique_id=1493022443]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -449,18 +449,19 @@ offset_right = 248.79346
 offset_bottom = 14.536089
 grow_vertical = 2
 theme = ExtResource("2_3v0tr")
-disabled = true
-text = "Cameras
+text = "First Person Movement
 "
 alignment = 0
+script = ExtResource("4_fwf6a")
+level_path = "uid://clq0tfxlx71js"
 
-[node name="UI_Follow_05" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_05" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=1390444367]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Vehicles" type="Button" parent="Circle/Level_Select_Path/UI_Follow_05"]
+[node name="Top Down RPG" type="Button" parent="Circle/Level_Select_Path/UI_Follow_05" unique_id=1153650560]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -471,17 +472,18 @@ offset_right = 248.79346
 offset_bottom = 14.536089
 grow_vertical = 2
 theme = ExtResource("2_3v0tr")
-disabled = true
-text = "Vehicle Movement"
+text = "Top Down RPG"
 alignment = 0
+script = ExtResource("4_fwf6a")
+level_path = "uid://cdff6gv54vmyk"
 
-[node name="UI_Follow_06" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_06" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=341528457]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="AI Behaviour" type="Button" parent="Circle/Level_Select_Path/UI_Follow_06"]
+[node name="AI Behaviour" type="Button" parent="Circle/Level_Select_Path/UI_Follow_06" unique_id=1017536460]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -496,13 +498,13 @@ disabled = true
 text = "AI Behaviour"
 alignment = 0
 
-[node name="UI_Follow_07" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_07" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=1023598234]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Networking" type="Button" parent="Circle/Level_Select_Path/UI_Follow_07"]
+[node name="Networking" type="Button" parent="Circle/Level_Select_Path/UI_Follow_07" unique_id=1772137353]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -518,13 +520,13 @@ text = "Networking
 "
 alignment = 0
 
-[node name="UI_Follow_08" type="PathFollow2D" parent="Circle/Level_Select_Path"]
+[node name="UI_Follow_08" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=986626923]
 position = Vector2(678.751, 350.00876)
 progress = 432.14227
 h_offset = 20.0
 rotates = false
 
-[node name="Mini Games" type="Button" parent="Circle/Level_Select_Path/UI_Follow_08"]
+[node name="Mini Games" type="Button" parent="Circle/Level_Select_Path/UI_Follow_08" unique_id=1026020877]
 z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
@@ -540,7 +542,7 @@ text = "Mini Games
 "
 alignment = 0
 
-[node name="Cursor_control" type="Control" parent="."]
+[node name="Cursor_control" type="Control" parent="." unique_id=1000992530]
 unique_name_in_owner = true
 z_index = 2
 anchors_preset = 0
@@ -551,7 +553,7 @@ offset_bottom = 249.0
 pivot_offset = Vector2(0, 16)
 script = ExtResource("4_hrd0q")
 
-[node name="Cursor_Sprite" type="Sprite2D" parent="Cursor_control"]
+[node name="Cursor_Sprite" type="Sprite2D" parent="Cursor_control" unique_id=1083974373]
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(0.6, 0.6)
@@ -559,19 +561,15 @@ texture = ExtResource("4_3v0tr")
 centered = false
 hframes = 14
 
-[node name="Cursor_Animation" type="AnimationPlayer" parent="Cursor_control/Cursor_Sprite"]
+[node name="Cursor_Animation" type="AnimationPlayer" parent="Cursor_control/Cursor_Sprite" unique_id=1812473335]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_fwf6a")
-}
+libraries/ = SubResource("AnimationLibrary_fwf6a")
 
-[node name="Menu Transitions" type="AnimationPlayer" parent="."]
+[node name="Menu Transitions" type="AnimationPlayer" parent="." unique_id=1433566080]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_cxdik")
-}
+libraries/ = SubResource("AnimationLibrary_cxdik")
 
-[node name="Copy" type="Label" parent="."]
+[node name="Copy" type="Label" parent="." unique_id=580048447]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -592,14 +590,14 @@ text = "© PorpleFish ・ Porple.Fish"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Audio_Players" type="Node" parent="."]
+[node name="Audio_Players" type="Node" parent="." unique_id=433645141]
 
-[node name="Open level select" type="AudioStreamPlayer" parent="Audio_Players"]
+[node name="Open level select" type="AudioStreamPlayer" parent="Audio_Players" unique_id=1641311487]
 unique_name_in_owner = true
 stream = ExtResource("7_ccn2o")
 bus = &"User Interface"
 
-[node name="Close level select" type="AudioStreamPlayer" parent="Audio_Players"]
+[node name="Close level select" type="AudioStreamPlayer" parent="Audio_Players" unique_id=1864835346]
 unique_name_in_owner = true
 stream = ExtResource("8_2fncq")
 bus = &"User Interface"

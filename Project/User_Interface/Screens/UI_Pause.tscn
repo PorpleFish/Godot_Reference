@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://hs6ansf1yoya"]
+[gd_scene format=3 uid="uid://hs6ansf1yoya"]
 
 [ext_resource type="Theme" uid="uid://dvwno78jp3gre" path="res://User_Interface/Themes/T_Main_Menu.tres" id="1_ld8gg"]
 [ext_resource type="Script" uid="uid://7vabbpd0xbyw" path="res://Scripts/pause_menu.gd" id="1_y8qqf"]
 [ext_resource type="Script" uid="uid://ddbuaponwu8hv" path="res://Scripts/Focus_Follow_Cursor.gd" id="3_ovkim"]
-[ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/S_FishCursor.png" id="4_i0g58"]
+[ext_resource type="Texture2D" uid="uid://cmitcx4rai1op" path="res://Textures/SpriteSheets/UI/S_FishCursor.png" id="4_i0g58"]
 
 [sub_resource type="Animation" id="Animation_3v0tr"]
 resource_name = "Idle"

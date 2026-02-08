@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmitcx4rai1op"
-path="res://.godot/imported/S_FishCursor.png-2d1ac138582a745b0c75a8ad04f1af1a.ctex"
+uid="uid://dvoqghbctbp1w"
+path="res://.godot/imported/Raven_characters 12.png-781204cdaa9d2a1ae1874b92072bd6f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/SpriteSheets/S_FishCursor.png"
-dest_files=["res://.godot/imported/S_FishCursor.png-2d1ac138582a745b0c75a8ad04f1af1a.ctex"]
+source_file="res://Textures/SpriteSheets/TopDown/Raven_characters 12.png"
+dest_files=["res://.godot/imported/Raven_characters 12.png-781204cdaa9d2a1ae1874b92072bd6f8.ctex"]
 
 [params]
 

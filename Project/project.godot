@@ -22,6 +22,10 @@ run/main_scene="uid://hnl4vron5y6b"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Audio/Bus Layout.tres"
+
 [autoload]
 
 PhantomCameraManager="*uid://duq6jhf6unyis"

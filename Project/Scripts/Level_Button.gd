@@ -1,6 +1,6 @@
 extends Button
 
-@export var level_path : String
+@export_file("*.tscn") var level_path : String
 
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(level_path)

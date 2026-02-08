@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dvwno78jp3gre"]
+[gd_resource type="Theme" format=3 uid="uid://dvwno78jp3gre"]
 
 [ext_resource type="FontFile" uid="uid://cvcg1gueyvlws" path="res://User_Interface/Fonts/Brygada_1918.ttf" id="1_oneih"]
 [ext_resource type="StyleBox" uid="uid://8aeay7v4j6eg" path="res://User_Interface/Styles/SB_HoveredMainMenu.tres" id="2_wr4y1"]
