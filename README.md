@@ -3,6 +3,8 @@ This is a project made based on various tutorials for my own reference. I will l
 
 ---
 
+# Tutorials and References:
+
 ## VFX
 
 Fake Volumetric Lights by [PassiveStar](https://passivestar.xyz/) - [Tutorial](https://passivestar.xyz/posts/light-beam-shader-in-godot/)
@@ -11,3 +13,11 @@ Fake Volumetric Lights by [PassiveStar](https://passivestar.xyz/) - [Tutorial](h
 ## Dialogue
 
 Dialogue in Dialogic by [Hex Blit University](https://github.com/HexBlitUniversity) - [Tutorial](https://www.youtube.com/watch?v=7PuPU0Mrl_g)
+
+---
+
+# Resources:
+
+## Sprites
+
+Roguelike Raven Starter Set by [Clockwork Raven](https://clockworkraven.itch.io/) - [Asset Pack](https://clockworkraven.itch.io/roguelike-raven-starter-set)
