@@ -120,6 +120,8 @@ animations = [{
 radius = 20.024984
 
 [node name="RPG_Protagonist" type="CharacterBody2D" unique_id=275548854]
+z_index = 1
+z_as_relative = false
 script = ExtResource("1_5aipr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1742183534]
@@ -128,6 +130,8 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5aipr")
 animation = &"Walk_Right"
 autoplay = "Idle_Right"
+frame_progress = 0.06936859
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900233686]
+visible = false
 shape = SubResource("CircleShape2D_rqas0")

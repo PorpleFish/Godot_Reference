@@ -475,7 +475,7 @@ theme = ExtResource("2_3v0tr")
 text = "Top Down RPG"
 alignment = 0
 script = ExtResource("4_fwf6a")
-level_path = "uid://cdff6gv54vmyk"
+level_path = "uid://gej2xkw5iyxj"
 
 [node name="UI_Follow_06" type="PathFollow2D" parent="Circle/Level_Select_Path" unique_id=341528457]
 position = Vector2(678.751, 350.00876)

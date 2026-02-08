@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://gej2xkw5iyxj"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_nwqyc"]
+[ext_resource type="PackedScene" uid="uid://bqj1tu42thihg" path="res://Character/RPG/RPG_Protagonist.tscn" id="2_nwqyc"]
+[ext_resource type="Script" uid="uid://bml4fpcacqca0" path="res://Scripts/RPG Level Manager.gd" id="3_22t63"]
+[ext_resource type="PackedScene" uid="uid://cdff6gv54vmyk" path="res://Levels/05_Top_Down_RPG/RPG_Bedroom.tscn" id="4_y7kkj"]
+
+[node name="RpgParentScene" type="Node2D" unique_id=22545479]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=175218727]
+texture_filter = 1
+position = Vector2(582, 325)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=996656776]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_nwqyc")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="RPG_Protagonist" parent="." unique_id=275548854 instance=ExtResource("2_nwqyc")]
+position = Vector2(603, 314)
+walk_bob_frequency = 50.0
+walk_bob_amplitude = 2.0
+walk_bob_return_speed = 0.1
+walk_spin_frequency = 50.0
+walk_spin_amplitude = 0.4
+walk_spin_return_speed = 0.1
+
+[node name="LevelParent" type="Node2D" parent="." unique_id=1175646691]
+unique_name_in_owner = true
+script = ExtResource("3_22t63")
+
+[node name="RPG_Bedroom" parent="LevelParent" unique_id=1076894418 instance=ExtResource("4_y7kkj")]

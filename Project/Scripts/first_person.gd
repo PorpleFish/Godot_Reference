@@ -46,10 +46,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0.0
 			velocity.z = 0.0
-	#else:
-		#velocity.x = lerp(velocity.x, direction.x * walk_speed, delta * 2.0)
-		#velocity.z = lerp(velocity.z, direction.z * walk_speed, delta * 2.0)
-	
+
 	# head bob
 	bob_time += delta * velocity.length() * float(is_on_floor())
 	first_person_camera.transform.origin = _head_bob(bob_time)
