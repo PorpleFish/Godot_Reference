@@ -29,12 +29,15 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="RPG_Protagonist" parent="." unique_id=275548854 instance=ExtResource("2_nwqyc")]
 position = Vector2(603, 314)
-walk_bob_frequency = 40.0
+walk_bob_frequency = 30.0
 walk_bob_amplitude = 3.0
 walk_bob_return_speed = 0.1
-walk_spin_frequency = 20.0
-walk_spin_amplitude = 0.2
+walk_spin_frequency = 15.0
+walk_spin_amplitude = 0.15
 walk_spin_return_speed = 0.1
+walk_squish_frequency = 30.0
+walk_squish_amplitude = 0.05
+walk_squish_return_speed = 0.1
 
 [node name="LevelParent" type="Node2D" parent="." unique_id=1175646691]
 unique_name_in_owner = true
@@ -52,4 +55,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.5, 2.5)
 theme_override_styles/panel = SubResource("StyleBoxTexture_13i0o")

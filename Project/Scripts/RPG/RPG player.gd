@@ -8,6 +8,10 @@ extends CharacterBody2D
 @export var walk_spin_amplitude : float = 0.08
 @export var walk_spin_return_speed : float = 0.08
 
+@export var walk_squish_frequency : float = 1.9
+@export var walk_squish_amplitude : float = 0.08
+@export var walk_squish_return_speed : float = 0.08
+
 const move_speed = 300.0
 const acceleration = 0.1
 const decceleration = 0.1
@@ -26,6 +30,7 @@ func _physics_process(delta: float) -> void:
 		walk_time += delta
 		%Sprite_Pivot.position = _walk_bob(walk_time)
 		%Sprite_Pivot.rotation = _walk_rotate(walk_time)
+		sprite.scale.y = _walk_scale(walk_time)
 		velocity = lerp(velocity, direction * move_speed, acceleration)
 		if abs(velocity.x) > 0.5:
 			if direction.x > 0.0:
@@ -35,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		%Sprite_Pivot.position = lerp(%Sprite_Pivot.position, Vector2.ZERO, walk_bob_return_speed)
 		%Sprite_Pivot.rotation = lerp(%Sprite_Pivot.rotation, 0.0, walk_spin_return_speed)
+		sprite.scale.y = lerp(sprite.scale.y, 1.0, walk_squish_return_speed)
 		velocity = lerp(velocity, Vector2.ZERO, decceleration)
 		if abs(velocity.x) > 0.5:
 			if velocity.x > 0.0:
@@ -57,3 +63,9 @@ func _walk_rotate(time : float) -> float:
 	var rot : float = 0.0
 	rot = sin(time * walk_spin_frequency) * walk_spin_amplitude
 	return rot
+
+
+func _walk_scale(time : float) -> float: 
+	var scale_y : float = 0.0
+	scale_y =  1 - sin(time * walk_squish_frequency) * walk_squish_amplitude
+	return scale_y
