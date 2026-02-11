@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		walk_time += delta
-		sprite.position = _walk_bob(walk_time)
-		sprite.rotation = _walk_rotate(walk_time)
+		%Sprite_Pivot.position = _walk_bob(walk_time)
+		%Sprite_Pivot.rotation = _walk_rotate(walk_time)
 		velocity = lerp(velocity, direction * move_speed, acceleration)
 		if abs(velocity.x) > 0.5:
 			if direction.x > 0.0:
@@ -33,8 +33,8 @@ func _physics_process(delta: float) -> void:
 			else:
 				sprite.play("Walk_Left")
 	else:
-		sprite.position = lerp(sprite.position, Vector2.ZERO, walk_bob_return_speed)
-		sprite.rotation = lerp(sprite.rotation, 0.0, walk_spin_return_speed)
+		%Sprite_Pivot.position = lerp(%Sprite_Pivot.position, Vector2.ZERO, walk_bob_return_speed)
+		%Sprite_Pivot.rotation = lerp(%Sprite_Pivot.rotation, 0.0, walk_spin_return_speed)
 		velocity = lerp(velocity, Vector2.ZERO, decceleration)
 		if abs(velocity.x) > 0.5:
 			if velocity.x > 0.0:
@@ -47,8 +47,9 @@ func _physics_process(delta: float) -> void:
 
 func _walk_bob(time : float) -> Vector2: 
 	var pos = Vector2.ZERO
-	pos.y = sin(time * walk_bob_frequency) * walk_bob_amplitude
-	pos.x = cos(time * walk_bob_frequency) * walk_bob_amplitude
+	pos.y = sin(time * walk_bob_frequency)
+	#pos.x = cos(time * walk_bob_frequency)
+	pos *= walk_bob_amplitude
 	return pos
 
 

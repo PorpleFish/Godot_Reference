@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqj1tu42thihg"]
 
-[ext_resource type="Script" uid="uid://bpngwbwd46mdd" path="res://Scripts/rpg player.gd" id="1_5aipr"]
+[ext_resource type="Script" uid="uid://bpngwbwd46mdd" path="res://Scripts/RPG/RPG player.gd" id="1_5aipr"]
 [ext_resource type="Texture2D" uid="uid://dvoqghbctbp1w" path="res://Textures/SpriteSheets/TopDown/Raven_characters 12.png" id="1_pwi7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5aipr"]
@@ -119,14 +119,21 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqas0"]
 radius = 20.024984
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5aipr"]
+radius = 20.0
+
 [node name="RPG_Protagonist" type="CharacterBody2D" unique_id=275548854]
 z_index = 1
 z_as_relative = false
 script = ExtResource("1_5aipr")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1742183534]
+[node name="Sprite_Pivot" type="Node2D" parent="." unique_id=1380769602]
+unique_name_in_owner = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Sprite_Pivot" unique_id=1742183534]
 unique_name_in_owner = true
 texture_filter = 1
+position = Vector2(2, -23)
 sprite_frames = SubResource("SpriteFrames_5aipr")
 animation = &"Walk_Right"
 autoplay = "Idle_Right"
@@ -135,3 +142,10 @@ frame_progress = 0.06936859
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900233686]
 visible = false
 shape = SubResource("CircleShape2D_rqas0")
+
+[node name="Player Area" type="Area2D" parent="." unique_id=2038894867]
+position = Vector2(5, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Area" unique_id=2136013778]
+visible = false
+shape = SubResource("CircleShape2D_5aipr")
